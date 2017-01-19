@@ -50,8 +50,34 @@ However, an explicit ``I don't know'' answer is worth 1 point.
 $$\langle g, h \rangle = \int_0^1 g(x)h(x)\,dx.$$
 Orthogonalize the basis $1, x, x^2$.
 
+\textbf{Answer}
+
+I use the Gram Schmidt process for finding orthogonal basis vectors.
+First let $u_1 = 1$
+Then let's define
 \[
-1, x-\frac{1}{2} x^2 - x + \frac{1}{6}
+proj_u(v) = \frac{\langle u , v \rangle}{\langle u , u \rangle }u
+\]
+Then let ,
+\[
+u_2 = x - proj_{u1}(x) = x - \frac{\int_{0}^{1}x dx}{\int_{0}^{1}1 dx}
+\]
+\[
+= x - \frac{1}{2}
+\]
+and finally, 
+\[
+u_3 = x^2 - proj_{u1}(x^2) - proj_{u2}(x^2)
+\]
+\[
+= x^2 - \frac{\int_{0}^{1}x^2 dx}{\int_{0}^{1}1 dx} - \frac{\int_{0}^{1} x^3 - \frac{1}{2}x^2 dx}{\int_0^1 (x-\frac{1}{2})^2 dx} (x-\frac{1}{2})
+\]
+\[
+= x^2 - x + \frac{1}{6}
+\]
+Giving us our orthogonal basis vectors,
+\[
+u_1 = 1, u_2 = x-\frac{1}{2}, u_3 = x^2 - x + \frac{1}{6}
 \]
 
 \item Here is a little fact: Let $X$ be a random variable with finite mean $\mu$ and finite variance $\sigma^2$.  Then $\forall t>0$ we have
@@ -61,9 +87,11 @@ Let $\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i$.
 Use the little fact to prove 
 $$\forall \epsilon>0, \forall \delta>0, \exists N>0, \forall n\ge N, P(|\bar{X}_n - \mu|\le \epsilon)\ge 1-\delta.$$
 
+\
+
 \textbf{Proof}
 
-If $X_i ... X_n$ all have variance $\sigma^2$ and mean $\mu$, then $\bar{X}_n$ has variance $\sigma^2/n$ and mean $\mu$. Therefore by our little fact,
+If $X_i ... X_n$ all have finite variance $\sigma^2$ and finite mean $\mu$, then $\bar{X}_n$ has finite variance $\sigma^2/n$ and finite mean $\mu$. Therefore by our little fact,
 \[
 P(|\bar{X}_n - \mu| \geq t) \leq \frac{\sigma^2}{nt^2}
 \]
@@ -76,7 +104,7 @@ Then for any $n \geq N$
 P(|\bar{X}_n - \mu| \geq \epsilon) \leq \frac{\sigma^2}{n\epsilon^2} \leq \frac{\sigma^2}{N\epsilon^2} \leq \delta
 \]
 
-Then since $P(|\bar{X}_n - \mu| \geq \epsilon)$ , then
+Then since $P(|\bar{X}_n - \mu| \geq \epsilon) \leq \delta$ , we get for it's complement
 \[
 P(|\bar{X}_n - \mu| \leq \epsilon) \geq 1 - \delta
 \]
