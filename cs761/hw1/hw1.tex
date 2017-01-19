@@ -1,0 +1,86 @@
+% To produce pdf under linux, run
+% pdflatex hw1.tex 
+
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{url}
+
+\def\bfx{\mathbf x}
+\def\R{\mathbb R}
+\def\E{\mathbb E}
+\def\argmax{\mathrm{argmax}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\title{CS761 Spring 2015 Homework 1}
+\author{Assigned Jan. 18, due Jan. 20 before class}
+\date{}
+\begin{document}
+\maketitle
+
+Instructions: 
+\begin{itemize}
+\item Homeworks are to be done individually.
+\item Typeset your homework in latex using this file as template (e.g. use pdflatex).  Show your derivations.
+\item Hand in the compiled pdf (not the latex file) online.  Instructions will be provided.  We do not accept hand-written homeworks.  
+\item Homework will no longer be accepted once the lecture starts.
+\item Fill in your name and email below.  
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Insert your name and email here:
+
+Name: Max Horowitz-Gelb                      
+
+Email: horowitzgelb@wisc.edu
+
+\newpage % Please keep this page-break
+% Do not include any identifying information below this line.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Each question has 5 points if answered correctly.
+Wrong answers or blank answers 0 points.
+However, an explicit ``I don't know'' answer is worth 1 point.
+
+
+\begin{enumerate}
+
+\item Define inner product on real functions
+$$\langle g, h \rangle = \int_0^1 g(x)h(x)\,dx.$$
+Orthogonalize the basis $1, x, x^2$.
+
+\[
+1, x-\frac{1}{2} x^2 - x + \frac{1}{6}
+\]
+
+\item Here is a little fact: Let $X$ be a random variable with finite mean $\mu$ and finite variance $\sigma^2$.  Then $\forall t>0$ we have
+$$P(|X-\mu| \ge t) \le \frac{\sigma^2}{t^2}.$$
+Now let $X_1, X_2, \ldots$ be a sequence of independent and identically distributed random variables with mean $\mu$ and variance $\sigma^2$.
+Let $\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i$.
+Use the little fact to prove 
+$$\forall \epsilon>0, \forall \delta>0, \exists N>0, \forall n\ge N, P(|\bar{X}_n - \mu|\le \epsilon)\ge 1-\delta.$$
+
+\textbf{Proof}
+
+If $X_i ... X_n$ all have variance $\sigma^2$ and mean $\mu$, then $\bar{X}_n$ has variance $\sigma^2/n$ and mean $\mu$. Therefore by our little fact,
+\[
+P(|\bar{X}_n - \mu| \geq t) \leq \frac{\sigma^2}{nt^2}
+\]
+
+Now let $\epsilon > 0, \delta > 0$ be given. 
+Then set $N = \ceil{\frac{\sigma^2}{\delta\epsilon^2}}$
+
+Then for any $n \geq N$
+\[
+P(|\bar{X}_n - \mu| \geq \epsilon) \leq \frac{\sigma^2}{n\epsilon^2} \leq \frac{\sigma^2}{N\epsilon^2} \leq \delta
+\]
+
+Then since $P(|\bar{X}_n - \mu| \geq \epsilon)$ , then
+\[
+P(|\bar{X}_n - \mu| \leq \epsilon) \geq 1 - \delta
+\]
+
+\end{enumerate}
+
+\end{document}
