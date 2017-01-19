@@ -1,4 +1,7 @@
+
+
 \documentclass{article}
+\usepackage{amsmath}
 \title{HW1}
 \author{Max Horowitz-Gelb horowitzgelb@wisc.edu}
 \date{1/19/17}
@@ -6,7 +9,7 @@
 \begin{document}
 \maketitle
 \section*{Q1}
-Let $X_1 ... X_40$ be a set of random variables such that $X_i = 1$ is the event that box $i$ is empty
+Let $X_1 ... X_{40}$ be a set of random variables such that $X_i = 1$ is the event that box $i$ is empty
 after all $80$ balls have been placed, and $X_i = 0$ otherwise.
 Then the number of boxes empty after all balls are placed, which let's call $T$, is 
 \[
@@ -29,5 +32,36 @@ We know that the variance of $T$ is equal to $E[T^2] - E[T]^2 = E[T^2] - 27.8521
 Then,
 \[
 E[T^2] = E[ \sum_{i=1}^{40}\sum_{j=1}^{40}X_i X_j] = \sum_{i=1}^{40}\sum_{j=1}^{40}E[X_i X_j]
+\]
+\[
+E[X_iX_j] = 1 * P(X_iX_j = 1) + 0 * P(X_iX_j = 0) = P(X_iX_j = 1)
+\]
+If $i = j$ then $X_iX_j = 1$ if and only if $X_i = 1$ and then,
+\[
+P(X_iX_j = 1) = P(X_i = 1) = 0.13193780538
+\]
+If $i \neq j$ then
+\[
+P(X_iX_j = 1) = \frac{38}{40}^{80} = 0.01651537438
+\]
+Therefore, 
+\[
+E[T^2] = 40 * P(X_iX_j = 1 | i = j) + 40*39 * P(X_iX_j=1|i\neq j) 
+\]
+\[
+= 40 * 0.13193780538 + 40*39*0.01651537438 = 31.041496248
+\]
+So,
+\[
+Var(T) = E[T^2] - E[T]^2 = 31.041496248 - 27.85213518454 = 3.18936106346
+\]
+\section*{Q2}
+If $X$ is a uniform random variable over $[0,\frac{\pi}{2}]$ then $X$ has a pdf,
+\[
+f(x) = \frac{2}{\pi} \text{ for } x \in [0,\frac{\pi}{2}]
+\]
+Therefore,
+\[
+E[sin(X)] = \int_{0}^{\frac{\pi}{2}} sin(x)f(x)dx = \frac{2}{\pi}
 \]
 \end{document}
