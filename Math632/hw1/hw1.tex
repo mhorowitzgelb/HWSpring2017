@@ -1,0 +1,33 @@
+\documentclass{article}
+\title{HW1}
+\author{Max Horowitz-Gelb horowitzgelb@wisc.edu}
+\date{1/19/17}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+Let $X_1 ... X_40$ be a set of random variables such that $X_i = 1$ is the event that box $i$ is empty
+after all $80$ balls have been placed, and $X_i = 0$ otherwise.
+Then the number of boxes empty after all balls are placed, which let's call $T$, is 
+\[
+T = \sum_{i=1}^{40} X_i
+\]
+Then,
+\[
+E[T] = E[\sum_{i=1}^{40} X_i] = \sum_{i=1}^{40} E[X_i]
+\]
+The expected value of any $X_i$ is the same and can be calculated as,
+\[
+E[X_i] = 1*P(X_i = 1) + 0 * P(X_i = 0) = P(X_i = 1) = \frac{39}{40}^{80} = 0.13193780538
+\]
+Therefore,
+\[
+E[T] = \sum_{i=1}^{40} E[X_i] = 40 * 0.13193780538 = 5.27751221548
+\]
+A similar procedure is used to find the vaiance of $T$.
+We know that the variance of $T$ is equal to $E[T^2] - E[T]^2 = E[T^2] - 27.85213518454$.
+Then,
+\[
+E[T^2] = E[ \sum_{i=1}^{40}\sum_{j=1}^{40}X_i X_j] = \sum_{i=1}^{40}\sum_{j=1}^{40}E[X_i X_j]
+\]
+\end{document}
