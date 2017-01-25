@@ -65,13 +65,13 @@ Therefore,
 E[sin(X)] = \int_{0}^{\frac{\pi}{2}} sin(x)f(x)dx = \frac{2}{\pi}
 \]
 \section*{Q3}
-At time $n$ there are $X_n$ white balls in the left urn, $5-X_n$ black balls in the left urn, $5-X-n$ white balls in the right urn and $X_n$ black balls in the right urn. To calculate the transition probability $P(X_{n+1} = j | X_n = i)$ we must consider 3 cases. If $i = j$, then either we must swap a black ball from the left urn with a black ball from the right urn or a white ball from the left urn and a white ball from the right urn. The probability on the black balls is ,
+At time $n$ there are $X_n$ white balls in the left urn, $5-X_n$ black balls in the left urn, $5-X_n$ white balls in the right urn and $X_n$ black balls in the right urn. To calculate the transition probability $P(X_{n+1} = j | X_n = i)$ we must consider 3 cases. If $i = j$, then either we must swap a black ball from the left urn with a black ball from the right urn or a white ball from the left urn and a white ball from the right urn. The probability on the black balls is ,
 \[
-\frac{i}{5} * \frac{5-i}{5} = \frac{5i - i^2}{25}
+\frac{5-i}{5} * \frac{i}{5} = \frac{5i - i^2}{25}
 \]
 and the probability from the white balls is the same,
 \[
-\frac{5-i}{5} *\frac{i}{5}= \frac{5i - i^2}{25}
+\frac{i}{5} * \frac{5-i}{5} = \frac{5i - i^2}{25}
 \]
 Therefore the total probability for $j = i$ is, 
 \[
