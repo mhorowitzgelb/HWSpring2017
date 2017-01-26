@@ -24,9 +24,10 @@ public class Lab1 {
 
 
         double[] w = new double[train.x[0].length];
+        /*
         for(int i = 0; i < w.length; i ++){
             w[i] = Math.random() * 0.1 - 0.05;
-        }
+        }*/
         double learningRate = 0.1;
         for(int epoch = 0; epoch < 1000; epoch ++){
             shuffle(train.x,train.y);
