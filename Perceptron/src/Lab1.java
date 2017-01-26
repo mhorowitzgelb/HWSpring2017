@@ -1,8 +1,12 @@
+import jdk.nashorn.internal.runtime.ECMAException;
+
 import javax.swing.text.NumberFormatter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -23,13 +27,17 @@ public class Lab1 {
         Data test = parseDataset(pathTest);
 
 
+
         double[] w = new double[train.x[0].length];
+        double[] bestW = null;
+        double bestTune = -1;
+        int bestEpoch = -1;
         /*
         for(int i = 0; i < w.length; i ++){
             w[i] = Math.random() * 0.1 - 0.05;
         }*/
         double learningRate = 0.1;
-        for(int epoch = 0; epoch < 1000; epoch ++){
+        for(int epoch = 0; epoch < 5000; epoch ++){
             shuffle(train.x,train.y);
             for(int i = 0; i < train.x.length; i ++){
                 int[] x = train.x[i];
@@ -39,13 +47,19 @@ public class Lab1 {
                 for(int j = 0; j < w.length; j ++){
                     w[j] += learningRate * diff * x[j];
                 }
+
+
             }
-            if((epoch + 1)%50 == 0)
-                printAccuracy(epoch +1,train,tune,test,w);
+            if((epoch + 1)%50 == 0) {
+                double tuneAccuracy = accuracy(tune, w, false);
+                if (tuneAccuracy > bestTune) {
+                    bestTune = tuneAccuracy;
+                    bestW = w;
+                    bestEpoch = epoch;
+                }
+            }
         }
-        System.out.println(String.format("The tune set was highest (%s%% accuracy) at Epoch %d. Test set = %s%% here",
-                formatter.format(bestTune),bestTuneEpoch,formatter.format(testOfBestTune)));
-        printW(w,train);
+        printAccuracy(bestEpoch,train, tune, test,bestW);
     }
 
     static double bestTune = -1;
@@ -55,15 +69,15 @@ public class Lab1 {
 
 
     public static void printAccuracy(int epoch, Data train, Data tune, Data test, double[] w){
-        double trainAcc = accuracy(train,w);
-        double tuneAcc = accuracy(tune,w);
-        double testAcc = accuracy(test, w);
+        double trainAcc = accuracy(train,w,false);
+        double tuneAcc = accuracy(tune,w,false);
+        double testAcc = accuracy(test, w, true);
         if(tuneAcc > bestTune){
             bestTune = tuneAcc;
             testOfBestTune = testAcc;
             bestTuneEpoch = epoch;
         }
-        System.out.println("Epoch "+ epoch+": train = " + formatter.format(trainAcc) + "% tune = "
+        System.out.println("\nEpoch "+ (epoch)+": train = " + formatter.format(trainAcc) + "% tune = "
                 +formatter.format(tuneAcc) + "% test = " + formatter.format(testAcc)+"%" );
     }
 
@@ -88,12 +102,18 @@ public class Lab1 {
         }
     }
 
-    private static  double accuracy(Data data, double[] w){
+    private static  double accuracy(Data data, double[] w, boolean printPredictions){
         int correct = 0;
+        if(printPredictions){
+            System.out.println("Test Set Predictions:");
+        }
         for(int i = 0; i < data.x.length; i ++){
             int[] x = data.x[i];
             int y = data.y[i];
-            if(score(x,w) == y)
+            int pred = score(x,w);
+            if(printPredictions)
+                System.out.println(data.classNames[pred]);
+            if(pred == y)
                 correct ++;
         }
         return 100*((double)correct) / data.x.length;
@@ -131,77 +151,84 @@ public class Lab1 {
     public static Data parseDataset(String path) throws Exception {
         Scanner scanner = new Scanner(new FileReader(path));
         int numFeatures = 0;
-        while(scanner.hasNext()){
-            String word = scanner.next();
-            if(!word.contains("//")) {
-                numFeatures = Integer.parseInt(word);
-                scanner.nextLine();
+        while(scanner.hasNextLine()){
+            String[] line = getLine(scanner);
+            if(line.length == 1){
+                numFeatures = Integer.parseInt(line[0]);
                 break;
             }
-            scanner.nextLine();
+            else if(line.length > 0){
+                throw new Exception("Invalid number of numbers on line for num features");
+            }
         }
         int featuresRead = 0;
         String[] featureNames = new String[numFeatures];
         String[][] featureValues = new String[numFeatures][2];
-        while(scanner.hasNext()){
-            String word = scanner.next();
-            if(!word.contains("//")) {
-                featureNames[featuresRead] = word;
-                String dash = scanner.next();
+        while(scanner.hasNextLine()){
+            String[] line = getLine(scanner);
+            if(line.length == 4) {
+                featureNames[featuresRead] = line[0];
+                String dash = line[1];
                 if(!dash.equals("-"))
                     throw new Exception("Parse error. No dash!");
 
-                featureValues[featuresRead][0] = scanner.next();
-                featureValues[featuresRead][1] = scanner.next();
+                featureValues[featuresRead][0] = line[2];
+                featureValues[featuresRead][1] = line[3];
                 featuresRead ++;
                 if(featuresRead == numFeatures) {
-                    scanner.nextLine();
                     break;
                 }
             }
-            scanner.nextLine();
-
+            else if(line.length != 0){
+                throw new Exception("Incorrect num of words for feature names");
+            }
         }
         String[] classNames = new String[2];
         int tempClassIndex = 0;
-        while(scanner.hasNext()){
-            String word = scanner.next();
-            if(!word.contains("//")){
-                classNames[tempClassIndex] = word;
+        while(scanner.hasNextLine()){
+            String[] line = getLine(scanner);
+
+            if(line.length == 1){
+                classNames[tempClassIndex] = line[0];
                 tempClassIndex ++;
                 if(tempClassIndex > 1){
-                    scanner.nextLine();
                     break;
                 }
             }
-            scanner.nextLine();
+            else if(line.length != 0){
+                throw new Exception("Invalid number of words for class names");
+            }
         }
         int numExamples = 0;
-        while(scanner.hasNext()){
-            String word = scanner.next();
-            if(!word.contains("//")){
-                numExamples = Integer.parseInt(word);
-                scanner.nextLine();
+        while(scanner.hasNextLine()){
+            String[] line = getLine(scanner);
+            if(line.length == 1){
+                numExamples = Integer.parseInt(line[0]);
                 break;
             }
-            scanner.nextLine();
+            else if(line.length != 0)
+                throw new Exception("Wrong number of words for num examples");
         }
         int[][] x = new int[numExamples][numFeatures+1];
         int[] y = new int[numExamples];
         for(int i = 0; i < numExamples; i ++){
-            String line = "";
+            String[] line = null;
             while(scanner.hasNextLine()){
-                line = scanner.nextLine();
-                if(!line.contains("//") && line.length() > 0) {
+                line = getLine(scanner);
+                if(line.length ==0)
+                    continue;
+                else if(line.length == 2 + numFeatures)
                     break;
+                else{
+                    throw new Exception("Incorrect number of features for example");
                 }
             }
-            String[] split = line.split("\\s+");
+            String[] split = line;
             y[i] = split[1].equals(classNames[0]) ? 0 : 1;
             for(int j = 0; j < numFeatures; j ++){
                 String val = split[j + 2];
                 if(val.equals(featureValues[j][0]))
-                    x[i][j] = -1;
+                    x[i][j] = 0;
                 else if(val.equals(featureValues[j][1]))
                     x[i][j] = 1;
                 else
@@ -216,6 +243,22 @@ public class Lab1 {
         data.featureValues = featureValues;
         data.classNames = classNames;
         return data;
+    }
+
+    public static String[] getLine(Scanner scanner){
+        if(!scanner.hasNextLine())
+            return new String[0];
+        else{
+            Scanner lineReader = new Scanner(scanner.nextLine());
+            List<String> wordList = new ArrayList<>();
+            while(lineReader.hasNext()){
+                String word = lineReader.next();
+                if(word.startsWith("//"))
+                    break;
+                wordList.add(word.split("//")[0]);
+            }
+            return wordList.toArray(new String[wordList.size()]);
+        }
     }
 
     public static class Data{
