@@ -74,13 +74,35 @@ Using similar logic to before, we can rewrite $P(X_3 = X_2 + 1 | X_4 = 4)$ as,
 \]
 
 \section*{Q4}
+Our probability space is equal to 
 \[
-\left\{\max_{n \in \mathbb{Z}} X_n \leq m \right\}  = \bigcup_{n,i \in \mathbb{Z}} A_{n,i} \setminus \bigcup_{n \in \mathbb{Z} , i > m} A_{n,i} 
+\Omega = \bigcup_{n \geq 0 ,i} A_{n,i}
+\]
+and, 
+\[
+\left\{\max_{n \geq 1} X_n > m \right\}  = \bigcup_{n \geq 1, i > m} A_{n,i}
+\]
+So then, 
+\[
+\left\{\max_{n \geq 1} X_n \leq m \right\}  =  \bigg( \bigcup_{n \geq 0 ,i} A_{n,i} \bigg) \setminus \bigg( \bigcup_{n \geq 1, i > m} A_{n,i} \bigg)
+\]
+Then,
+\[
+\left\{ \max_{n \geq 1} X_n \geq m \right\} = \bigcup_{n \geq 1} A_{n,m}
+\]
+so,
+\[
+\left\{\max_{n \geq 1} X_n = m \right\}  = \bigg( \bigcup_{n \geq 1} A_{n,m} \bigg) \setminus \bigg( \bigcup_{n \geq 1 , i > m} A_{n,i} \bigg)
 \]
 
+\section*{Q5}
+Let $a = 2, b = 1, c = 0, d = 0$. Then $P(X_8 = a | X_7 \in \{b,c\} , X_6 = d) = 0$. This is because $d = 0$, so $X_6 = 0$, which implies $\forall_{n > 6} X_n = 0$.
+But, 
 \[
-\left\{\max_{n \in \mathbb{Z}} X_n = m \right\}  = \bigcup_{n \in \mathbb{Z} , i = m} A_{n,i} \setminus \bigcup_{n \in \mathbb{Z} , i > m} A_{n,i} 
+P(X_8 = a| X_7 \in \{b,c\}) = P(X_8 = 2 | X_7 = 1) + P(X_8 = 2 | X_7 = 0) = P(X_8 = 2 | X_7 = 1)
 \]
-
+$P(X_8 = 2 | X_7 = 1) > 0$, so it is not the case that 
+\\
+$P(X_8 = a | X_7 \in \{b,c\} , X_6 = d) = P(X_8 = a| X_7 \in \{b,c\})$.
 \end{document}
 
