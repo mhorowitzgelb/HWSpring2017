@@ -76,7 +76,7 @@ Using similar logic to before, we can rewrite $P(X_3 = X_2 + 1 | X_4 = 4)$ as,
 \section*{Q4}
 Our probability space is equal to 
 \[
-\Omega = \bigcup_{n \geq 0 ,i} A_{n,i}
+\Omega = \bigcup_{n \geq 1 ,i} A_{n,i}
 \]
 and, 
 \[
@@ -84,11 +84,11 @@ and,
 \]
 So then, 
 \[
-\left\{\max_{n \geq 1} X_n \leq m \right\}  =  \bigg( \bigcup_{n \geq 0 ,i} A_{n,i} \bigg) \setminus \bigg( \bigcup_{n \geq 1, i > m} A_{n,i} \bigg)
+\left\{\max_{n \geq 1} X_n \leq m \right\}  =  \bigg( \bigcup_{n \geq 1 ,i} A_{n,i} \bigg) \setminus \bigg( \bigcup_{n \geq 1, i > m} A_{n,i} \bigg)
 \]
 Then,
 \[
-\left\{ \max_{n \geq 1} X_n \geq m \right\} = \bigcup_{n \geq 1} A_{n,m}
+\left\{ \exists_{n \geq 1} : X_n = m \right\} = \bigcup_{n \geq 1} A_{n,m}
 \]
 so,
 \[
