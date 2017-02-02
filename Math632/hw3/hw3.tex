@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{parskip}
+
+\title{HW Week 3}
+\author{Max Horowitz-Gelb}
+\date{February 2nd, 2017}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+\section*{Q1}
+We have shown in class that this probability can be rewritten as for arbitrary $n \geq 1$ as, 
+\[
+P(X_{n+2} = 3, X_{n+4} = 4 | X_{n+1} = 9 , X_n = 8)
+\]
+Then since $X$ is a THMC this can be written simply as,
+\[
+p(9,3)*p(3,4)^2
+\]
+
+\section*{Q2}
+\subsection*{a}
+If $V = \text{max} \{T,U\}$ then $V$ is a stopping time. This is because there are only two cases.
+
+\textbf{Case 1}: $T \geq U$
+
+Since $T$ and $U$ are stopping times, we can check this with only $X_1 ... X_U$, which implies then that we can tell this with only $X_1 ... X_T$. Then in this case $V = T$ and since $T$ is a stopping time, $V$ can be determined with only $X_1 ... X_{V}$.
+
+\textbf{Case 2}: $T < U$
+
+Since $T$ and $U$ are stopping times, we can check this with only $X_1 .. X_T$ which implies we can tell this with $X1 ... X_U$. Then in this case $V = U$ and since $U$ is a stopping time, $V$ can be determined with only $X_1 ... X_{V}$.
+
+Then by definition $V$ is a stopping time. 
+\subsection*{b}
+If $V = \text{min}\{T, U\}$ then again there are the two same cases.
+
+\textbf{Case 1}: $T \geq U$
+
+Again we can tell this with only $X_1 ... X_U$. Then $V = U$ and since $U$ is a stopping time, we can know $V$ with only $X_1 ... X_V$.
+
+\textbf{Case 2}: $T < U$.
+
+Again we can determine if this inequality is true with only $X_1 ... X_T$. And $V = T$, and since $T$ is a stopping time, then we can determine $V$ with only $X_1 ... X_V$.
+
+Therefore $V$ is a stopping time.
+\end{document}
