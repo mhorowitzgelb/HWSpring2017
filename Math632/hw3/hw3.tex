@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{parskip}
 
 \title{HW Week 3}
@@ -43,4 +44,41 @@ Again we can tell this with only $X_1 ... X_U$. Then $V = U$ and since $U$ is a 
 Again we can determine if this inequality is true with only $X_1 ... X_T$. And $V = T$, and since $T$ is a stopping time, then we can determine $V$ with only $X_1 ... X_V$.
 
 Therefore $V$ is a stopping time.
+
+\section*{Q3}
+Let $n$ be given. First note that by definition of a THMC
+\[
+P(X_{T+2} = j | X_T = i , T = n) = P(X_{n+2} = j | X_n = i, past) = p(i,j)^2 
+\]
+implies,
+\[
+\forall n'
+P(X_{T+2} = j | X_T = i , T = n') = p(i,j)^2
+\]
+Then note that $P(X_{T+2} = j | X_T = i)$ can be rewritten as,
+\[
+\sum_{n'} P(X_{T+2} = j | X_T = i, T=n')*P(T=n')
+\]
+Which by what we've shown above can be rewritten as,
+\[
+= p(i,j)^2 * \sum_{n'} P(T=n')
+\] 
+\[
+=p(i,j)^2
+\]
+
+\section*{Q4}
+Let $X_0 = E$, and $T = min{n \geq 1 : X_n = E}$
+Then 
+\[
+P(T = \infty) = P(E,N) * \lim_{n \to \infty} \prod_{i = 2}^{n} p(N,N)
+\]
+\[
+= 0.9 * \lim_{n \to \infty} \prod_{i = 2}^{n} 0.2
+\]
+\[
+= 0
+\]
+Therefore $E$ is a recurrent state.
+
 \end{document}
