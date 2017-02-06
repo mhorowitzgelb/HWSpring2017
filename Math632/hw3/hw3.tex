@@ -16,7 +16,7 @@ P(X_{n+2} = 3, X_{n+4} = 4 | X_{n+1} = 9 , X_n = 8)
 \]
 Then since $X$ is a THMC this can be written simply as,
 \[
-p(9,3)*p(3,4)^2
+p(9,3)*p^2(3,4)
 \]
 
 \section*{Q2}
@@ -25,35 +25,36 @@ If $V = \text{max} \{T,U\}$ then $V$ is a stopping time. This is because there a
 
 \textbf{Case 1}: $T \geq U$
 
-Since $T$ and $U$ are stopping times, we can check this with only $X_1 ... X_U$, which implies then that we can tell this with only $X_1 ... X_T$. Then in this case $V = T$ and since $T$ is a stopping time, $V$ can be determined with only $X_1 ... X_{V}$.
+Since $T$ and $U$ are stopping times, we can check for this case with only $X_1 ... X_U$, which implies that we can check this case with only $X_1 ... X_T$. Then if we are in this case, $V = T$ and since $T$ is a stopping time, $V$ can be determined with only $X_1 ... X_{V}$.
 
 \textbf{Case 2}: $T < U$
 
-Since $T$ and $U$ are stopping times, we can check this with only $X_1 .. X_T$ which implies we can tell this with $X1 ... X_U$. Then in this case $V = U$ and since $U$ is a stopping time, $V$ can be determined with only $X_1 ... X_{V}$.
+Since $T$ and $U$ are stopping times, we can check this case with only $X_1 .. X_T$ which implies we can tell this case with $X1 ... X_U$. Then in this case, $V = U$ and since $U$ is a stopping time, $V$ can be determined with only $X_1 ... X_{V}$.
 
 Then by definition $V$ is a stopping time. 
+
 \subsection*{b}
 If $V = \text{min}\{T, U\}$ then again there are the two same cases.
 
 \textbf{Case 1}: $T \geq U$
 
-Again we can tell this with only $X_1 ... X_U$. Then $V = U$ and since $U$ is a stopping time, we can know $V$ with only $X_1 ... X_V$.
+Again we can tell if we are in this case with only $X_1 ... X_U$. Then if we are in this case, $V = U$ and since $U$ is a stopping time, we can know $V$ with only $X_1 ... X_V$.
 
 \textbf{Case 2}: $T < U$.
 
-Again we can determine if this inequality is true with only $X_1 ... X_T$. And $V = T$, and since $T$ is a stopping time, then we can determine $V$ with only $X_1 ... X_V$.
+Again we can determine if we are in this case with only $X_1 ... X_T$. And if we are in this case, $V = T$, and since $T$ is a stopping time, then we can determine $V$ with only $X_1 ... X_V$.
 
 Therefore $V$ is a stopping time.
 
 \section*{Q3}
 Let $n$ be given. First note that by definition of a THMC
 \[
-P(X_{T+2} = j | X_T = i , T = n) = P(X_{n+2} = j | X_n = i, past) = p(i,j)^2 
+P(X_{T+2} = j | X_T = i , T = n) = P(X_{n+2} = j | X_n = i, past) = p^2(i,j)
 \]
 implies,
 \[
 \forall n'
-P(X_{T+2} = j | X_T = i , T = n') = p(i,j)^2
+P(X_{T+2} = j | X_T = i , T = n') = p^2(i,j)
 \]
 Then note that $P(X_{T+2} = j | X_T = i)$ can be rewritten as,
 \[
@@ -61,17 +62,17 @@ Then note that $P(X_{T+2} = j | X_T = i)$ can be rewritten as,
 \]
 Which by what we've shown above can be rewritten as,
 \[
-= p(i,j)^2 * \sum_{n'} P(T=n')
+= p^2(i,j) * \sum_{n'} P(T=n')
 \] 
 \[
-=p(i,j)^2
+=p^2(i,j)
 \]
 
 \section*{Q4}
-Let $X_0 = E$, and $T = min{n \geq 1 : X_n = E}$
+Let $X_0 = E$, and $T = min\{n \geq 1 : X_n = E\}$
 Then 
 \[
-P(T = \infty) = P(E,N) * \lim_{n \to \infty} \prod_{i = 2}^{n} p(N,N)
+P(T = \infty) = p(E,N) * \lim_{n \to \infty} \prod_{i = 2}^{n} p(N,N)
 \]
 \[
 = 0.9 * \lim_{n \to \infty} \prod_{i = 2}^{n} 0.2
@@ -79,6 +80,45 @@ P(T = \infty) = P(E,N) * \lim_{n \to \infty} \prod_{i = 2}^{n} p(N,N)
 \[
 = 0
 \]
-Therefore $E$ is a recurrent state.
+Therefore $P(T < \infty) = 1$ and $E$ is a recurrent state.
+
+\section*{Q5}
+Let $E : \{X_1 .. X_n\} \mapsto \mathbb{R}$ and $N : \{X_1 ... X_n\} \mapsto \mathbb{R}$ be functions such that $E(\{X_1, ... X_n\})$ equals the number of $E$ states in the set $\{X_1 ... X_n\}$ and $N(\{X_1, ... X_n\})$ equal the number of $N$ states in $\{X_1, ... X_n\}$. 
+
+Then $T = n$ if and only if $E(\{X_1,... X_n\}) \geq 1$, $N(\{X_1,... X_n\}) \geq 2$, $E(\{X_1,... X_{n-1}\}) = 0$ and $N(\{X_1,... X_{n-1}\}) < 2$. Since this is a function of only $X_1 ... X_n$ then $T$ is a stopping time. 
+
+Now we consider $P(T = +\infty | X_0 = E)$.
+This is bounded by,
+\[
+P_{n \to \infty}(N(X_1 ... X_n) < 2) + P_{n \to \infty}(E(X_1 ... X_n) < 1)
+\]
+For the left part of this bound,
+\[
+P_{n \to \infty}(N(X_1 ... X_n) < 2) = P_{n \to \infty}(N(X_1 ... X_n) = 0) + 
+P_{n \to \infty}(N(X_1 ... X_n) = 1)
+\]
+\[
+P_{n \to \infty}(N(X_1 ... X_n) = 0) = \lim_{n \to \infty} p(E,E)^n =\lim_{n \to \infty} 0.1^n = 0
+\]
+\[
+P_{n \to \infty}(N(X_1 ... X_n) = 1) = \lim_{n \to \infty} {{n}\choose{1}} * p(E,N) * p(N,E) * p(E,E)^n
+\]
+\[
+= \lim_{n \to \infty} n * 0.9 * 0.2 * 0.1 ^n = 0
+\]
+And for the right part of the bound,
+\[ 
+P_{n \to \infty}(E(X_1 ... X_n) < 1) = P_{n \to \infty}(E(X_1 ... X_n) = 0)
+\]
+\[
+= \lim_{n \to \infty} p(E,N) * p(N,N)^n = \lim_{n \to \infty} 0.9 * 0.8 ^ n = 0
+\]
+
+Therefore $P( T = +\infty | X0 = E) = 0$
+
+
+
+
+
 
 \end{document}
