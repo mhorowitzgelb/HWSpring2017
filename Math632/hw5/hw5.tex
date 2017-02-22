@@ -1,7 +1,10 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-
+\usepackage{graphicx}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
 \title{HW 5}
 \author{Max Horowitz-Gelb}
 \date{2/20/17}
@@ -45,7 +48,7 @@ This gives us the set of equations
 Solving for these equations you get that $\pi_1$ is free $\pi_2 = (1/7)(1-\pi_1) $and $\pi_3 = (6/7)(1-\pi_1)$.
 So the the staitionary distributions are
 \[
-[\pi_1, (1/7)(1-\pi_1), (6/7)(1-\pi_1)]  \text{ for any } \pi_1 \in \mathbb{R}
+[\pi_1, (1/7)(1-\pi_1), (6/7)(1-\pi_1)]  \text{ for any } \pi_1 \in [0,1]
 \] 
 
 \section*{Q3}
@@ -69,16 +72,18 @@ is also a stationary measure, and since its elements sum to 1 and are positive t
 
 \subsection*{a}
 For a single step it is simply,
-\begin{tabular}{|l|l|l}
+\begin{tabular}{|l|l|l|l|l|}
 \hline
- & R & S \\ \hline
-RR & 0.6 & 0.4\\ \hline
-RS & 0.6 & 0.4\\ \hline
-SR & 0.6 & 0.4\\ \hline
-SS & 0.3 & 0.7 \\ \hline
+ & RR & RS & SR & SS \\ \hline
+RR & 0.6 & 0.4 & 0 & 0\\ \hline
+RS & 0& 0 &0.6 & 0.4\\ \hline
+SR & 0.6 & 0.4 & 0 & 0\\ \hline
+SS & 0 &0 & 0.3 & 0.7 \\ \hline
 \end{tabular}
 \subsection*{b}
 For two steps we must calculate two transitions which gives us
+
+
 \begin{tabular}{| l | l | l | l |l|}
 	\hline
      & RR & RS & SR & SS \\ \hline
@@ -113,6 +118,26 @@ $
 0 & 1 \\
 \end{bmatrix}
 $. Then state 1 is transient and state 2 is recurrent. Clearly state 1 is transient since with probability 1 it will transition from state 1 to 2, and there is no way to transition back to 1. Clearly state 2 is recurrent since it will always transition back to itself with proability 1. 
+
+\section*{Q6}
+For a state set of {1,2,3,4,5,6} we define the transition probabilities graphically,
+\includegraphics[scale=0.5]{transition}
+
+State 1 is clearly transient since it only has an outgoing edge. 
+
+States 2 and 3 both have period 2 since both will travel to the other and then travel back to theirselves with probability 1, which takes two transitions.
+
+States 4,5 and 6 all have period 3, since all of them with probability 1 will travel once to each of the other nodes before returning to theirselves which takes three transitions.
+
+\section*{Q7}
+State -2 starts in the triangle, so it will return to itself after at least once going through the triangle and some number of times through the square so,
+$I_{-2} = \{3a + 4b : a \in \mathbb{N} , b \in \mathbb{N} \cup \{0\} \}$
+
+3 and 7 exist in $I_{-2}$ and the gcd of these is 1 so state -2 has period 1.
+
+State 2 starts in the square, so it will return to itself after at least once going through the square and some number of times throught the triangle so, 
+$I_{2} = \{3a + 4b : a \in \mathbb{N} \cup \{0\} , b \in \mathbb{N}\}$
+4 and 7 are in $I_2$ and they have a gcd of 1 so state 2 has a period of 1.
 
 
 
