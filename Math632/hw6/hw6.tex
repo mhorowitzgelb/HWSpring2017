@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\title{HW 6}
+\date{2/27/17}
+\author{Max Horowitz-Gelb}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+Let our state space be $[T,C]$. Then we can think of one vehicle following another vehicle as a transition 
+with transition matrix,
+\[
+p_{i,j} =
+\begin{bmatrix}
+1/4 & 3/4\\
+1/5 & 4/5
+\end{bmatrix}
+\]
+We can then solve for the stationary distribution of this transition matrix simply since it is a 2x2 matrix.
+
+\[
+\pi_T = \frac{1/5}{1/5 + 3/4} = 0.2105, 
+\pi_C = \frac{3/4}{1/5 + 3/4} = 0.7895
+\]
+
+Then since $p_{i,j} \neq 0$ for all $i,j$, then clearly $p$ is irreducible and aperiodic. Then since our state space is finite and we have a stationary distribution $\pi$, then theorem 1.19 says the probability of being a truck converges to $\pi_T = 0.2105$. 
+
+\section*{Q2}
+For this we simply solve for the set of functions
+\[
+\pi_1 - (0.86\pi_1 + 0.05\pi_2 + 0.03\pi_3) = 0
+\]
+\[
+	\pi_2 - (0.08\pi_1 + 0.88\pi_2 + 0.05 \pi_3)= 0
+\]
+\[
+	\pi_1 + \pi_2 + \pi_3 = 1
+\]
+
+Then,
+\[
+\pi = [0,0,1]\begin{bmatrix}
+0.14 & -0.08 & 1 \\
+-0.05 & 0.12 & 1\\
+-0.04 & -0.05 & 1
+\end{bmatrix}^{-1} 
+ = [ 0.2155477 ,  0.33215548,  0.45229682]
+\]
+
+Then since $p$ is finite and $p_{i,j} \neq 1$ for all $i,j$ then $p$  is irreducible and is aperiodic, we may again apply theorem 1.19 to say that in the long run,
+$\pi_1 = 0.2155477$ fraction of the population will reside in cities, $\pi_2 = 0.33215548$ fraction of people will reside in suburbs and $\pi_3 = 0.45229682$ fraction of people will reside in rural areas.
+
+\section*{Q3}
+\subsection*{a.}
+Using the same strategy as Q2 we first solve for a stationary distribution to get
+\[
+\pi = [ 0.36363636,  0.35664336,  0.27972028]
+\]
+ 
+Then since p is finite and $p_{i,j} \neq 0$ for all $i,j$ then we again can apply 1.19 to say,  
+\[
+\lim_{n \to \infty} p^n(1,2) = 0.35664336
+\]
+\subsection*{b.}
+Then since $p$ is irreducible and closed, then it is recurrent, and we may apply theorem 1.21 which says,
+\[
+\frac{N_n(2)}{n} \rightarrow \frac{1}{E_2T_2}
+\]
+and as shown in a.,
+\[
+\frac{N_n(2)}{n} \rightarrow \pi_2
+\]
+so ,
+\[
+\pi_2 = \frac{1}{E_2T_2}
+\]
+and
+\[
+E_2T_2 -1 = 1/\pi_2 -1 = 1.8039
+\]
+\subsection*{c.}
+\[
+E[\text{walking distance}] = \sum_{n} p(n) * (0.3 + 0.1n)
+\]
+\[
+= \sum_{n} \pi_n * (0.3 + 0.1n) = 0.4916
+\]
+
+\section*{Q4}
+\subsection*{i}
+Our state space is $[1,2,2']$ where the number indicates the number of light bulbs working and ' indicates we just replaced  the light bulbs.
+Then our transition matrix is
+\[
+\begin{bmatrix}
+0.95 & 0 & 0.05\\
+0.02 & 0.98 & 0\\
+0.02 & 0.98 & 0 
+\end{bmatrix}
+\]
+Solving for the stationary distribution we get,
+\[
+\pi = [ 0.2857,  0.7       ,  0.0143]
+\]
+Then since $p$ is finite and nonzero for all $i,j$, then it is irreducible and theorem 1.19 says that the long run fraction of time one light bulb is working is $\pi_1 = 0.2857$. 
+
+\subsection*{ii}
+Then we can use theorem 1.21 to say that
+\[
+E_2T_{2'} - 1 = 1/\pi_{2'} -1 = 69
+\]
+So the expected number of days between light bulb is 69 days.
+
+\section*{Q5}
+
+
+
+\end{document}
