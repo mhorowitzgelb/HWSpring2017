@@ -113,6 +113,29 @@ E_2T_{2'} - 1 = 1/\pi_{2'} -1 = 69
 So the expected number of days between light bulb is 69 days.
 
 \section*{Q5}
+First since states $\{1 ... M \}$ are closed, then for any $x \in \{1 ... M\}$. 
+\[
+\sum_m p(x,m) = \sum_m f((x-m) \mod M) = \sum_{n = 0}^{M-1} f(n) = 1
+\]
+Then for any $x \in \{1 ... M\}$,
+\[
+\sum_m p(m,x) = \sum_m f((m-x) \mod M) = \sum_{n = 0}^{M-1} f(n) = 1
+\]
+therefore the THMC is doubly stochastic implying at has a uniform stationary distribution
+\[
+\pi = [1/M ... 1/M]
+\]
+Clearly our state space is finite. Then since $p(1,2) > 0$ and $p(2,4) > 0)$
+then for all $x$, $p(x,(x+1) \mod M) , p(x, (x-1) \mod M), p(x, (x+2) \mod M) ,  p(x, (x-2) \mod M)$ are all positive. So for any integers $a,b$ such that $a + 2b = M$, $p^{a+b}(x,x) \neq 0$. For any $M \geq 4$ the set of $\{a+b\}$ has a gcd of 1. Therefore our THMC is aperiodic and by theorem 1.19
+\[
+lim_{n \to \infty} p^n(1,1) = \pi_1 = 1/M
+\]
+
+Then using theorem 1.23
+\[
+lim_{n \to \infty} \sum_{m = 1}^n X_m^2 = \sum_{i= 1} ^M \pi_i * i^2 = 1/M * \sum_{i = 1}^M i^2
+\]
+
 
 
 
