@@ -136,7 +136,85 @@ Then using theorem 1.23
 lim_{n \to \infty} \sum_{m = 1}^n X_m^2 = \sum_{i= 1} ^M \pi_i * i^2 = 1/M * \sum_{i = 1}^M i^2
 \]
 
+\section*{Q6}
+2 already shows us that $v$ is a distribution so we must only show that $v$ is a stationary measure. 
+Note
+\[
+(v p)_j = \sum_i v_ip(i,j)   
+\]
+which then using 3.
+\[
+ = \sum_i v_jp(j,i) = v_j * \sum_i p(j,i) = v_j
+\]
 
+Therefore $v$ is a stationary distribution.
 
+\section*{Q7}
+\subsection*{a.}
+First we solve for a stationary distribution
+$
+\pi = [ 0.5854,  0.2927,  0.0975,  0.0244]
+$
+Clearly $\{X_n\}$ is closed and since $p(1,1) > 0$ and for all $x$, $x \rightarrow 1$ then all states are aperiodic and by theorem 1.19 
+\[
+\lim_{n \to \infty} p(x,1) = \pi_1 = 0.5854
+\]
+which is the fraction of the time Dave shaves in the long run.
 
+\subsection*{b.}
+Yes $\pi$ has detailed balance condition after verifying,
+for all $i,j$
+\[
+\pi_i*p_{i,j} = \pi_j*p{j,i}
+\]
+
+\section*{Q8}
+\subsection*{a.}
+\[p(i,j) = 
+\begin{cases}
+\frac{i*(b-i)}{m^2} + \frac{(m-i)(m-b+i)}{m^2} & i = j\\
+\frac{(m-i)(b-i)}{m^2} & i = j - 1\\
+\frac{i(m-b+i)}{m^2} & i= j +1 \\
+0 & else\\
+\end{cases}
+\] 
+
+\subsection*{b.}
+$\pi$ is a stationary distribution since it satisfies the detailed balance condition. 
+This can be shown with 3 cases 
+\subsubsection*{Case 1 $|i -j| \geq 2$}
+
+Then clearly
+\[
+\pi_i*p(i,j) = \pi_j * p(j,i) = 0
+\]
+
+\subsubsection*{Case 2 $i = j$}
+Then clearly
+\[
+\pi_i*p(i,j) = \pi_j * p(j,i)
+\]
+\subsubsection*{Case 3 $|i-j| = 1$}
+Without loss of generality assume that $i = j -1$ since we can simply flip our equation around. 
+
+Then, 
+\[
+\pi_i*p(i,j) = \binom{b}{i}\binom{2m-b}{m-i} \big{/} \binom{2m}{m} \frac{(m-i)(b-i)}{m^2}
+\]
+\[
+= \frac{b!}{i!(b-i-1)!}\frac{(2m-b)!}{(m-i-1)!(m-b + i)!} \frac{\binom{2m}{m}}{m^2}
+\]
+and,
+\[
+\pi_j*p(j,i) = \binom{b}{j}\binom{2m-b}{m-j} \big{/} \binom{2m}{m} \frac{j(m-b+j)}{m^2}
+\]
+\[
+\frac{b!}{(j-1)!(b-j)!}\frac{(2m-b)!}{(m-j)!(m-b + j - 1)!} \frac{\binom{2m}{m}}{m^2}
+\]
+Then since $j = i +1$, plugging in $i+1$ you see that both equations are identical or,
+\[
+\pi_i*p(i,j) = \pi_j * p(j,i)
+\]
+
+Therefore $\pi$ satisfies the detailed balance condition and is a stationary distribution.
 \end{document}
