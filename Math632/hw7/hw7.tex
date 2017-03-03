@@ -17,7 +17,7 @@ g(x) = 1 + \sum_y p(x,y)g(y) = 1 + \sum_y r(x,y)g(y)
 where $r$ is $p$ restricted to $\{2 .. 12\}$.
 Then we can solve
 \[
-g[2 .. 12] = (I - r)^{-1} [1, ...1 ]^T
+g[2 .. 12] = (I - r)^{-1} \vec{1}
 \]
 $g$ turns out to be ,
 \[
@@ -28,4 +28,22 @@ Then since with probability 1 the starting state will transition to 2 or 12, the
 \[
 1 + 0.5 * g(2) + 0.5 * g(12) = 1 + 0.5 * 11 + 0.5 * 11 = 12
 \]
+
+\section*{Q4}
+First since the problem was not clear on edge cases I assume $p(1,2) = 1$ and $p(6,5) = 1$ . With that we first realize clearly that all states communicate with state 1 since each contains a shortest path to state 1 of positive probability. 
+So we again may use theorem 1.28 where our exit state is 1. 
+and solve for $g$
+\[
+g[2 .. 6] = (I - r)^{-1} \vec{1}
+\]
+And it turns out $g$ is equal to 
+\[
+g = [0 , 2.875   5.625   8.125  10.125  11.125]^T
+\]
+So since state 1 transitions to 2 with probability 1 then
+\[
+E_1T_1 = 1 + g(2) = 3.875
+\]
+
+\section*{Q5}
 \end{document}
