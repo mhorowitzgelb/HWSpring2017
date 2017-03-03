@@ -1,0 +1,31 @@
+\documentclass{article}
+\title{HW 7}
+\author{Max Horowitz-Gelb}
+\date{3/3/17}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+\section*{Q2}
+First without loss of generality we may assume the starting position is at time 1 since otherwise we could simply rename all the states by rotating the clock until the starting position was 1. Also note that all states communicate with state 1 since there is at most a shortest path of length 6 from any state to 1 with a probability of $0.5^{6}$ of occurring.
+Then using this, we may apply theorem 1.28 and say that
+if $g(x)$ is the expected number of transitions required to first get to state 1, then
+$g(1) = 0$ and for $x \neq 1$
+\[
+g(x) = 1 + \sum_y p(x,y)g(y) = 1 + \sum_y r(x,y)g(y)
+\]
+where $r$ is $p$ restricted to $\{2 .. 12\}$.
+Then we can solve
+\[
+g[2 .. 12] = (I - r)^{-1} [1, ...1 ]^T
+\]
+$g$ turns out to be ,
+\[
+[0, 11,  20,  27,  32,  35,  36,  35,  32,  27,  20,  11]^T
+\]
+
+Then since with probability 1 the starting state will transition to 2 or 12, then the expected the expected number of steps it will take $X_n$ to return to the starting position is
+\[
+1 + 0.5 * g(2) + 0.5 * g(12) = 1 + 0.5 * 11 + 0.5 * 11 = 12
+\]
+\end{document}
