@@ -38,7 +38,7 @@ g[2 .. 6] = (I - r)^{-1} \vec{1}
 \]
 And it turns out $g$ is equal to 
 \[
-g = [0 , 2.875   5.625   8.125  10.125  11.125]^T
+g = [0 , 2.875,   5.625,   8.125,  10.125,  11.125]^T
 \]
 So since state 1 transitions to 2 with probability 1 then
 \[
@@ -46,4 +46,27 @@ E_1T_1 = 1 + g(2) = 3.875
 \]
 
 \section*{Q5}
+Let $C = {G,A}$. Then since $p(G,F) > 0$ and $p(A,B) > 0$ then clearly $\rho_{xF} + \rho_{xB} > 0 $ for both $x = G$ and $x= A$.
+Then let $h(x) = P_x(V_F < V_B)$, and using theorem 1.27,
+$h(F) = 1, h(B) = 0$, and for $x \in C$,
+\[
+h(x) = r(x,F) + \sum_y r(x,y)h(y)
+\]
+where $r$ is $p$ restricted to $\{G,A\}$
+Then,
+
+\[
+h[G,A] = (I - r)^{-1}v
+\]
+where, $v$ is a column vector of $p(x,F)$.
+
+$h$ turns out to be
+\[
+[ 0.875,  0.75 ]^T
+\]
+Therefore the probability of paying of your debt in full given you are in good standing is 0.875 and 0.75 if you are in arrears. 
+
+
+
+
 \end{document}
