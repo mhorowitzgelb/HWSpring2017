@@ -66,6 +66,86 @@ $h$ turns out to be
 \]
 Therefore the probability of paying of your debt in full given you are in good standing is 0.875 and 0.75 if you are in arrears. 
 
+\section*{Q6}
+With the same logic as Q2 we may assume without loss of generality that our start position is at time 1. Then there are two different requirements to reach all states before returning to one depending on the firs transition. If from the start position we transition to state 2, then we will reach all states before returning to 1 if and only we reach state 12 before reaching state 1. Vice versa if first we transition to state 12 then we will reach every state before returning to the start state if and only if you reach state 2 before returning to state 1. 
+Therefore the probabality of reaching all other states before returning to the start state is
+\[
+p(1,2)*P_2(V_12 < V_1) + p(1,12)*P_12(V_2 < V_1)
+\]
+Since the probability of transitioning left and right are equal it then 
+\[
+P_2(V_{12} < V_1) = P_12(V_2 < V_1)
+\]
+So the probability above becomes simply
+\[
+P_2(V_{12} < V_1)
+\]
+Since the states are finite and all communicate with eachother then we may apply theorem 1.27 with $h(1) = 0$ , $h(12) = 1$ and $h(x) = r(x,12) + \sum_y r(x,y)h(y)$ where $r$ is $p$ restricted to $\{2..11\}$. 
+We can then solve for $h$
+
+\[
+h[2 .. 11] = (I -r)^{-1} v
+\]
+where $v$ is the column vector with value $r(x,a)$.
+$h$ turns to be 
+\[
+[0, 0.09090909,  0.18181818,  0.27272727,  0.36363636,  0.45454545,
+        0.54545455,  0.63636364,  0.72727273,  0.81818182,  0.90909091,1]
+\]
+
+So
+\[
+P_2(V_{12} < V_1) = h(2) = 0.09090909
+\]
+
+\section*{Q6}
+For this problem there are these finite set of states
+\[
+\{S, AB, AC, BA, BC, CA, CB, AW, BW, CW\}
+\]
+where $S$ is the start state where $A$ plays $B$, $xy$ is the state where $x$ just won and is now playing $y$ and $xW$ is the state where $x$ wins. 
+The transition matrix then becomes,
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S & AB  & AC  & BA  & BC  & CA  & CB  & AW  & BW  & CW  \\ 
+   \hline
+S  & 0 & 0   & 0.5 & 0   & 0.5 & 0   & 0   & 0   & 0   & 0   \\ 
+\hline
+AB & 0 & 0   & 0   & 0   & 0.5 & 0   & 0   & 0.5 & 0   & 0   \\ 
+\hline
+AC & 0 & 0   & 0   & 0   & 0   & 0   & 0.5 & 0.5 & 0   & 0   \\ 
+\hline
+BA & 0 & 0   & 0.5 & 0   & 0   & 0   & 0   & 0   & 0.5 & 0   \\ 
+\hline
+BC & 0 & 0   & 0   & 0   & 0   & 0.5 & 0   & 0   & 0.5 & 0   \\ 
+\hline
+CA & 0 & 0.5 & 0   & 0   & 0   & 0   & 0   & 0   & 0   & 0.5 \\ 
+\hline
+CB & 0 & 0   & 0   & 0.5 & 0   & 0   & 0   & 0   & 0   & 0.5 \\ 
+\hline
+AW & 0 & 0   & 0   & 0   & 0   & 0   & 0   & 1   & 0   & 0   \\ 
+\hline
+BW & 0 & 0   & 0   & 0   & 0   & 0   & 0   & 0   & 1   & 0   \\ 
+\hline
+CW & 0 & 0   & 0   & 0   & 0   & 0   & 0   & 0   & 0   & 1 \\ \hline
+\end{tabular}
+
+Then Let $X = \{AW, BW\}$, $Y = \{CW\}$ and $Z$ be all other states. 
+Then if $h(x) = P(V_Y < V_X)$ , then $h(AW) = h(BW) = 0$, $h(CW) = 1$ and for everything else,
+\[
+h(x) = r(x,CW) + \sum_y r(x,y)h(y)
+\]
+Since every state in $Z$ except $S$ can transition into one of the win states and $S$ transitions into $Z \\ S$ with probability 1 then clearly all states in $Z$ communicate with one of the win states so we can apply theorem 1.27 and solve for $h$.
+$h$ turns out to be,
+\[
+[ 0.28571429  0.14285714  0.28571429  0.14285714  0.28571429  0.57142857
+  0.57142857, 0, 0, 1]
+  \]
+  
+So the probability of $C$ winning is $h(S) = 0.28571429$
+
+
 
 
 
