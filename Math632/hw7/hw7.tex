@@ -29,7 +29,7 @@ Then since with probability 1 the starting state will transition to 2 or 12, the
 1 + 0.5 * g(2) + 0.5 * g(12) = 1 + 0.5 * 11 + 0.5 * 11 = 12
 \]
 
-\section*{Q4}
+\section*{Q5}
 First since the problem was not clear on edge cases I assume $p(1,2) = 1$ and $p(6,5) = 1$ . With that we first realize clearly that all states communicate with state 1 since each contains a shortest path to state 1 of positive probability. 
 So we again may use theorem 1.28 where our exit state is 1. 
 and solve for $g$
@@ -45,7 +45,7 @@ So since state 1 transitions to 2 with probability 1 then
 E_1T_1 = 1 + g(2) = 3.875
 \]
 
-\section*{Q5}
+\section*{Q6}
 Let $C = {G,A}$. Then since $p(G,F) > 0$ and $p(A,B) > 0$ then clearly $\rho_{xF} + \rho_{xB} > 0 $ for both $x = G$ and $x= A$.
 Then let $h(x) = P_x(V_F < V_B)$, and using theorem 1.27,
 $h(F) = 1, h(B) = 0$, and for $x \in C$,
@@ -66,7 +66,7 @@ $h$ turns out to be
 \]
 Therefore the probability of paying of your debt in full given you are in good standing is 0.875 and 0.75 if you are in arrears. 
 
-\section*{Q6}
+\section*{Q7}
 With the same logic as Q2 we may assume without loss of generality that our start position is at time 1. Then there are two different requirements to reach all states before returning to one depending on the firs transition. If from the start position we transition to state 2, then we will reach all states before returning to 1 if and only we reach state 12 before reaching state 1. Vice versa if first we transition to state 12 then we will reach every state before returning to the start state if and only if you reach state 2 before returning to state 1. 
 Therefore the probabality of reaching all other states before returning to the start state is
 \[
@@ -98,7 +98,7 @@ So
 P_2(V_{12} < V_1) = h(2) = 0.09090909
 \]
 
-\section*{Q6}
+\section*{Q8}
 For this problem there are these finite set of states
 \[
 \{S, AB, AC, BA, BC, CA, CB, AW, BW, CW\}
@@ -144,6 +144,8 @@ $h$ turns out to be,
   \]
   
 So the probability of $C$ winning is $h(S) = 0.28571429$
+
+
 
 
 
