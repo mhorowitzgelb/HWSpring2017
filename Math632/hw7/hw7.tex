@@ -9,6 +9,28 @@
 \begin{document}
 \maketitle
 \section*{Q1}
+Let $X$ be all $n!$ possible configurations of books. 
+Then then for $\pi$ to be a stationary distribution
+\[
+\sum_{x \in X} p_{i_1} * \pi(x) = \pi(y)
+\]
+for all $y \in X$ where $y = (i_1, ....i_n)$
+There are only $n$ states that can transition to $y$ which we call $C$
+\[
+C = \{(i_1 .. i_n) , (i_2, i_1, i_3 ... i_n) , ... , (i_2 ... i_n, i_1)\}
+\]
+So the sum above becomes
+\[
+\sum_{x \in C} p_{i_j} * \pi(x) 
+\]
+note $y \in C$ so this becomes
+\[
+	p_{i_1}* \pi(y) + \sum_{x \in C \setminus y} p_{i_1} * \pi(x) 
+\]
+\[
+	= p_{i_1} * \pi(y) + (1-p_{i_1})* \pi(y) = \pi(y)
+\]
+Therefore $\pi$ is a stationary distribution.
 \section*{Q2}
 First without loss of generality we may assume the starting position is at time 1 since otherwise we could simply rename all the states by rotating the clock until the starting position was 1. Also note that all states communicate with state 1 since there is at most a shortest path of length 6 from any state to 1 with a probability of $0.5^{6}$ of occurring.
 Then using this, we may apply theorem 1.28 and say that
@@ -73,7 +95,7 @@ Therefore,
 \]
 
 \section*{Q5}
-First since the problem was not clear on edge cases I assume $p(1,2) = 1$ and $p(6,5) = 1$ . With that we first realize clearly that all states communicate with state 1 since each contains a shortest path to state 1 of positive probability. 
+First since the problem was not clear on edge cases I assume $p(1,1) = 2/3$ and $p(6,6) = 1/3$. With that we first realize clearly that all states communicate with state 1 since each contains a shortest path to state 1 of positive probability. 
 So we again may use theorem 1.28 where our exit state is 1. 
 and solve for $g$
 \[
@@ -81,11 +103,11 @@ g[2 .. 6] = (I - r)^{-1} \vec{1}
 \]
 And it turns out $g$ is equal to 
 \[
-g = [0 , 2.875,   5.625,   8.125,  10.125,  11.125]^T
+g = [  2.90625,   5.71875,   8.34375,  10.59375,  12.09375]^T
 \]
-So since state 1 transitions to 2 with probability 1 then
+So since state 1 transitions to 2 with probability $1/3$ then
 \[
-E_1T_1 = 1 + g(2) = 3.875
+E_1T_1 = 1 + g(2)/3 = 1.96875
 \]
 
 \section*{Q6}
@@ -132,13 +154,13 @@ h[2 .. 11] = (I -r)^{-1} v
 where $v$ is the column vector with value $r(x,a)$.
 $h$ turns to be 
 \[
-[0, 0.09090909,  0.18181818,  0.27272727,  0.36363636,  0.45454545,
-        0.54545455,  0.63636364,  0.72727273,  0.81818182,  0.90909091,1]
+[0, 0.0909,  0.1818,  0.2727,  0.3636,  0.4545,
+        0.5454,  0.6363,  0.7272,  0.8181,  0.9090,1]
 \]
 
 So
 \[
-P_2(V_{12} < V_1) = h(2) = 0.09090909
+P_2(V_{12} < V_1) = h(2) = 0.0909
 \]
 
 \section*{Q8}
@@ -213,6 +235,35 @@ therefore
 E_1V_4 = E_1T_4 = 7.1818
 \]
 
+\section*{Bonus Question}
+\subsection*{a}
+\subsubsection*{i}
+Assume for contradiction there exists an $y \in S$
+such that 
+\[
+y \not\in A^x_0 \cup A^x_1 \cup A^x_2
+\] 
+. Since mod 3 only takes values 0,1,2 this would imply that there is no $k$ such that $p^k(x,y) > 0$. This is a contradiction since $\{X_n\}$ is irreducible.
+
+\subsubsection*{ii}
+Assume for contradiction there exists a $y \in S$ such that
+$y \in A^x_i \cap A^x_i, i \neq j$. 
+Then since $\{X_n\}$ are irreducible this would imply that for some $k$
+\[
+p^{k+i}(x,x) > 0
+\]
+and
+\[
+p^{k + j }(x,x) > 0
+\]
+but since $|i-j| < 3$ this would imply that $x$ has a period less than 3 which is a contradiction.
+
+\subsection*{b} 
+
+Assume for contradiction that there exists a $y \in A^x_0, z \in A^x_j$ where $j \neq 0$, and $p^3(y,z) > 0$. Then this would imply that $y$ is also in $A^x_j$, since $3 + j \equiv j \mod 3$. This can't be true as shown in a ii. Therefore the rows of $q$ sum to 1 and $q$ is a transition matrix.
+
+\subsection*{c}
+Assume that there exists $x,y \in A^x_0$ such that $x \not\rightarrow y$. Since the original THMC is irreducible and $x,y \in A^x_0$, first we note that for some $k$ $p^{3k}(x,y) > 0$. If the assumption were true then it would imply that there exists some $z \not\in A^x_0$ such that $p^3(x,z) >0, p^{3(k-1)}(z,y) >0$. This of course cannot be true since $z$ would have to be in $A^x_0$. So our new THMC is irreducible. Since in the original THMC all states had a period of 3 then that implies that for all $x \in A^x_0$ $p^3(x,x) > 0 $. Therefore $q(x,x) > 0 $ and the new THMC is aperiodic for all its states.
 
 
 
