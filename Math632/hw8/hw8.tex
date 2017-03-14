@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\title{HW 8}
+\author{Max Horowitz-Gelb}
+\date{March 13, 2017}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Q1}
+\subsection*{a.}
+The probablility the repair takes more than two hours is equal to 
+\[
+P_{\lambda = 1/2}(X > 2) = 1 - F_{\lambda = 1/2}(2) = 0.3678794
+\]
+
+
+\subsection*{b.}
+The probability that it takes more than 5 hours given it takes more than 3 hours is
+\[
+p_{\lambda = 1/2}(X >5 | X>3) = 1 - F(2) = 0.3678794
+\]
+
+\section*{Q2}
+If $X \sim exp(\lambda)$ then 
+for $t \geq 0$
+\[
+P(X > t) = 1 - e^{-\lambda t}
+\]
+and by definition of conditional for $s \geq 0$
+\[
+P(X > t +s | X > t) = \frac{P(X > t+s \cap X > t)}{P(X > t)} = \frac{P(X > t+s)}{P(X > t)}
+\]
+\[
+= e^{-\lambda(t+s)} / e^{-\lambda t} = e^{-\lambda s} = P(X > s)
+\]
+
+\section*{Q3}
+Let $X_2, X_2, X_3$ all be iid from an exponential with rate 2. 
+Then let $T_1, T_2, T_3$ be the corresponding order statistics. 
+
+Since $X_1, X_2, X_3$ are iid then
+\[
+P(T_1 > t) = P(X_1 > t)*P(X_2 >t)*P(X_3 >t) = e^{-3\lambda t}
+\]
+Therefore we can see that $T_1 \sim exp(3\lambda)$
+
+Then since the exponential distribution is memoryless we can see clearly that $(T_2 - T_1) \sim exp(2 \lambda)$ and $(T_3 - T_2) \sim exp(\lambda)$
+
+Then since $max(X_1, X_2, X_3) = T_1 + (T_2 - T_1) + (T_3 - T_2)$
+then
+\[
+E[max(X_1, X_2, X_3)] = E[T_1] + E[T_2 - T_1] + E[T_3-T_2] = 1/6 + 1/4 + 1/2 = 11/12
+\]
+
+\section*{Q4}
+Let $\tau_1 ... \tau_{100}$ be iid from an exponential with rate 3.
+
+Then $T_100 = \sum_{i = 1} ^{100} \tau_i$.
+Therefore
+\[
+E[T_100] = \sum_{i = 1} ^{100} E[\tau_i] = 100/3
+\]
+
+and since $\tau_1 ... \tau_100$ are iid, then
+\[
+Var[T_100] = \sum_{i=1}^{100} Var(\tau_i) = 100/9
+\]
+
+\section*{Q5}
+\subsection*{a.}
+Using the same logic as in Q4
+\[
+E[T_{12}] = 12/\lambda = 4
+\]
+
+\subsection*{b.}
+Because of memorylessness of exponentials
+\[
+E[T_{12} | N(2) = 5] = 2 + E[ \tau_6 +... +\tau_12] = 2 + 7/3 = 13/3
+\]
+
+\subsection*{c.}
+Since $N(t)$ is a Poisson process, then
+\[
+N(t + s) - N(t) \sim Poisson(3 * s)
+\]
+
+Therefore, 
+\[
+E(N(5) | N(2) = 5) = 5 + E[N(5) - N(2)] = 5 + 3 * 3 = 14
+\]
+\end{document}
