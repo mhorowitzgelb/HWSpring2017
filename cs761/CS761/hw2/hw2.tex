@@ -118,12 +118,25 @@ Define the norm on $\mathcal X$ as $\|X\|=\max |x_i|$.
 Let $X_n$ be a point in $\mathcal X$ (a sequence) defined by
 $$X_n = \left(1, \frac{1}{2}, \frac{1}{3}, \ldots, \frac{1}{n}, 0, 0, \ldots \right).$$
 
+
+
 \begin{itemize}
 \item
 Show that the sequence $X_n$ is a Cauchy sequence.
 \item
 Show that $\mathcal X$ is not complete.
 \end{itemize}
+
+\color{blue}
+The sequence $X_n$ is a Cauchy sequence. Let $\epsilon > 0$ be given. 
+Then let $N= \lceil 1/\epsilon \rceil$. Then for any $l,s > N$
+such that $l \leq s$
+$$
+\|x_s - x_l\| = \|(0,0,...,1/(l+1), ..., 1/s,0,...,0)\| = 1/(l+1) < 1/N \leq \epsilon
+$$
+
+$\mathcal X$ is not complete since $\|X_n - X_{n-1}\|$ converges to 0 which implies that as $n \to \infty, X_{n-1} \to X_n$ and this would imply that the number of non-zero elements of $X_{n-1}$ would have to go to $\infty$, which is not finite, and so $X_{n-1}$ is not in $\mathcal X$. 
+\color{black}
 
 \item
 Determine the range and nullspace of the following linear operators (matrices):
