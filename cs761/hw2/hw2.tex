@@ -300,6 +300,19 @@ Construct a joint distribution $p(x,y)$ with the following properties:
 \item $\hat y$ is the maximizer of the marginal $p(y)$
 \item $p(\hat x, \hat y)=0$.
 \end{itemize}
+\color{blue}
+Let our joint probability be 
+$$
+P(x,y) = 
+\begin{cases}
+1/3 & x = A, y \neq B \\
+1/6 & y = C, x \neq A \\
+0 & else
+\end{cases}
+$$
+For this distribution $A$ is a maximizer for $x$ with $p(x = A) = 2/3$ and $B$ is a maximizer of $y$ with $p(y = B) = 1/3$. 
+But $p(X = A, Y = B) = 0$
+\color{black}
 
 \item
 Logistic regression for $y\in \{-1,1\}$ is defined by
@@ -307,5 +320,18 @@ $$p(y \mid x; w,b) = \frac{1}{1+e^{-y (x^\top w + b)}}.$$
 Show that logistic regression is in the exponential family, that is, the probability distribution can be written in the form
 $$p(y \mid x; \tilde w) = \frac{1}{Z(x,\tilde w)} e^{\phi(y,x)^\top \tilde w}.$$
 Note the mapping $\phi$ depends only on $y, x$, but not on $w$ or $b$.
+
+\color{blue}
+Note that logistic regression can be rewritten as,
+$$
+p(y | x; w,b) = \frac{\exp(y(x^\top w + b))}{1 + \exp(y(x^\top w + b))}
+$$
+Then let $\tilde w = [w,b]$, $Z(x, \tilde w) = 1 + \exp(y(x^\top w + b)$ and $\phi(x,y) = [yx, y]$,
+then from my definition of $\tilde w$ the above probability is equivalent to 
+$$
+ \frac{1}{Z(x,\tilde w)} e^{\phi(y,x)^\top \tilde w}
+$$
+\color{black}
+
 \end{enumerate}
 \end{document}
