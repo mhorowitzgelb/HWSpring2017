@@ -171,8 +171,29 @@ Stdev(S(1)) = 600
 $$
 
 \subsection*{b}
+Since $N_D(t) \bot N_S(t)$ then the probability that between 2AM and 3AM that she writes exactly 5 speeding tickets and 1 DWI ticket is equal to,
+$$
+p(N_S(1) = 5)* p(N_D(1) = 1) = f_{Poisson(4)}(5) * f_{Poisson(2)}(1) = 0.04230
+$$
 
+\section*{Q8}
+First for notation sake, let $N(t)$ be the number of tickets written since the start and let $N = N(1)$.
 
+Then,
+$$
+P(A) = P(N(0.5) = 0) = f_{Poisson(3)}(0) =  0.04979
+$$
 
+$$
+P(A | N = 5) = \frac{P(A , N = 5)}{P(N = 5)} 
+$$
+$$
+= \frac{P(A) * P(N = 5 | A)}{P(N = 5)}  
+$$
+$$
+= \frac{f_{Poisson(3)}(0) * f_{Poisson(3)}(5)}{f_{Poisson(6)}(5)} = 0.03125 
+$$
+
+So $P(A) \neq P(A | N = 5)$
 
 \end{document}
