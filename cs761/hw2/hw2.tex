@@ -79,6 +79,48 @@ Then for all $t>0$
 $$\hat m_t = \frac{t}{t+1} \hat m_{t-1} + \frac{1}{t+1} X_t
 $$
 
+ii. 
+
+First I will show that
+$Q_t = \frac{1}{t+1}  \sum_{n=1}^t X_n X_n^\top$
+
+Base case:
+$$
+Q_1 = 1/2 X_1 X_1^\top = 1/2\sum_{n=1}^0 X_n X_n^\top + 1/2 X_1 X_1^\top
+$$
+
+Induction hypothesis:
+
+Assume $Q_{t-1} = \frac{1}{t} \sum_{n=1}^{t-1} X_n X_n^\top$ 
+
+Then, 
+$$
+Q_t = \frac{t}{t+1} * \frac{1}{t} \sum_{n=1} ^{t-1} X_n X_n^\top + 1/(t+1) X_t X_t ^\top
+$$
+
+$$
+= 1/(t+1) * \sum_{n=1}^t X_n X_n^\top
+$$
+
+Then since $Q_1 = 1/2 X_1 X_1^\top = 1/2\sum_{n=1}^0 X_n X_n^\top + 1/2 X_1 X_1^\top$
+
+Then by induction for all $t \geq 1$, $Q_t = 1/(t+1) * \sum_{n=1}^t X_n X_n^\top$v
+
+Then we can multiply out the dot product for $S_t(\hat m_t)$ and get
+$$
+S_t(\hat m_t) = \frac{1}{t+1} \sum_{n=1} ^ t X_n X_n^\top -2X_n \hat m_t ^\top + \hat m_t \hat m_t^\top
+$$
+$$
+\frac{1}{t+1} \sum_{n=1} ^ t (X_n X_n^\top) -2\hat m_t \hat m_t^\top + \hat m_t \hat m_t^\top
+$$
+$$
+ = \frac{1}{t+1} \sum_{n=1} ^ t (X_n X_n^\top)  - \hat m_t \hat m_t^\top
+$$
+Using our inductive proof from before this is equal to 
+$$
+Q_t - \hat m_t \hat m_t^\top
+$$
+
 \color{black}
 
 
@@ -345,6 +387,39 @@ b \nearrow &
 $$
 Show that $a \bot b \vert \emptyset$ by using a probability argument.
 Suppose we now observe the variable $d$.  Show that in general $a \not\perp b \vert d$ (you can use a counterexample).
+
+\color{blue}
+For any directed graphical model, the local markhov assumptions state that for all $X$,  
+$
+(X \bot Y | Parents(X)) 
+$ for all $Y$ that are nondescendants of $X$. Therefore since $a$ and $b$ parents are equal to $\emptyset$ and are not descendants of eachother, then
+$
+a \bot b \vert \emptyset
+$
+
+ii.
+For example assume $a, b, c, d$ are boolean random variables. Then we will define probabilities as such.
+
+$$
+p(a = T) = 0.5
+$$
+$$
+p(b = T) = 0.5
+$$
+$$
+p(c = T | a, b) = 
+\begin{cases} 
+1 & a = T, b = T \\
+0 & else
+\end{cases}
+$$
+$$
+p(d = T | c) = 
+\begin{cases}
+$$
+
+
+\color{black}
 
 \item
 Consider two discrete random variables $x,y \in \{A,B,C\}$.
