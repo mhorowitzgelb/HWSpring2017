@@ -24,6 +24,46 @@ P(T_{k} - \alpha < 1/12)
 $$ where $T_k = min\{T_n : T_n > \alpha\}$
 Because of the memoryless of the exponential distribution this is equal to, 
 $$
-\sum_{i > 0} p(k = i)(F_{exp(6)}(1/12) = (F_{exp(6)}(1/12) \sum_{i > 0} p(k = i) = (F_{exp(6)}(1/12) = 0.39347
+\sum_{i > 0} p(k = i)F_{exp(6)}(1/12) = F_{exp(6)}(1/12) \sum_{i > 0} p(k = i) = F_{exp(6)}(1/12) = 0.39347
 $$
+\subsection*{b}
+If the deer only needs 2 seconds to cross the road then the problem is the same and the probability of getting hit is,
+$$
+F_{exp(6)}(1/30) = 0.18127
+$$
+
+\section*{Q3}
+If $A$ is the total number of muons in the day, then $A$ is a sum of 3 Poisson random variables $X_1, X_2, X_3$,representing different the different signal rates throughout the day.We then have that 
+
+$X_1 \sim 8 Poisson(240), \qquad X_2 \sim 9Poisson(360), \qquad X_3 \sim 7Poisson(420)$
+
+Then since a sum of Poissons is Poisson,
+$$
+A \sim Poisson(8100)
+$$
+
+And therefore,
+$$
+Var(A) = 8100
+$$
+
+
+\section*{Q4}
+Let $Y_1, ... Y_N$ be a set of iid random variables representing the amount of money withdrawn from each customer, each with mean 30 and variance 400. Then let $N$ be a Poisson random variable with rate 80 representing the number of customers over the span of 8 hours. 
+Finally let $S = \sum_{i = 1} ^ N Y_i$ be the total amount of money withdrawn
+Then since $|E[Y_i]| = 30 < \infty$ and $E[N] = 80 < \infty$ 
+$$
+E[S] = E[N] \cdot E[Y_i] = 80 * 30 = 2400
+$$
+and since $N$ is Poisson with finite rate then,
+$$
+Var(S) = 80 * E[Y_i^2] = 80 * ( Var(Y_i) + E[Y_i]^2) = 80*(400 + 900) = 104000
+$$
+$$
+Stdev(S) = 104000^{0.5} = 322.49031
+$$
+
+
+\section*{Q5}
+
 \end{document}
