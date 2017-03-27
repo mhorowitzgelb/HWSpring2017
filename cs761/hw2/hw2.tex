@@ -179,6 +179,43 @@ b=\begin{bmatrix}
 \end{bmatrix}.$$
 One solution to $Ax=b$ is $x=[1,2,3,4]^\top$.  Compute the least-squares solution using the SVD (explain how), and compare. Why was the solution chosen?
 
+\color{blue}
+Using SVD $A$ is equivalent to 
+$$
+U \Sigma V
+$$
+where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix with diagonal values $\sigma_1, \sigma_2$ . 
+Then solving $Ax = b$ is equivalent to minimzing $\lVert Ax - b \rVert ^ 2$ which is equivalent to,
+$$
+\lVert U \Sigma V x - b \rVert ^ 2
+$$
+Since $U^\top$ is orthogonal it does not change the norm so the above is equivalent to,
+$$
+\lVert U^T U \Sigma V x - U^\top b \rVert ^2 = \lVert \Sigma V x - U^\top b \rVert ^2
+$$
+Then let $z = V x$ and the above is equivalent to 
+$$
+(\sigma_1 z_1 - U_1^\top b)^2 + (\sigma_2 z_1 - U_2^\top b)^2  + (U_3^T b)^2 + (U_3^T b)^2
+$$
+Since this is a minimization we can remove the summands that don't involve $z$ and get
+$$
+(\sigma_1 z_1 - U_1^\top b)^2 + (\sigma_2 z_2 - U_2^\top b)^2 
+$$
+We can then clearly minimize this by setting the free variables $z_3 = z_4 = 0$ and
+$z_1 = \frac{U_1^\top b}{\sigma_1}$ , $z_2 = \frac{U_2^\top b}{\sigma_2}$
+Solving for $z$ we get
+$$
+z = [-4.68423189, -2.75801453,  0,  0]
+$$  
+and 
+$$
+x = V^\top z = [ 0.54424779, 2.40265487, 3.09292035, 3.7300885]
+$$
+Since $\lVert z \rVert = \lVert Vx \rVert = \lVert x \rVert$,
+Then since $z_1, z_2$ are constrained and $z_3, z_4$ are free, then by setting $z_3=z_4=0$ we minimize $\lVert z \rVert$ and thereby minimize $\lVert x \rVert$. Therefore SVD gives the minimimum norm solution to $Ax = b$ .
+\color{black}
+
+
 \item
 Consider the following process.  A probability vector $p=(p_1, \ldots, p_d)$ is drawn from a Dirichlet distribution with parameter vector $\alpha$.
 Then, a vector of category counts $x=(x_1, \ldots, x_d)$ is drawn from a multinomial distribution with probability vector $p$ and number of trials $N$. Give an analytic form of $P(x \mid \alpha)$.  
@@ -322,15 +359,27 @@ $$p(y \mid x; \tilde w) = \frac{1}{Z(x,\tilde w)} e^{\phi(y,x)^\top \tilde w}.$$
 Note the mapping $\phi$ depends only on $y, x$, but not on $w$ or $b$.
 
 \color{blue}
-Note that logistic regression can be rewritten as,
+Note that the above probability is equal to 
 $$
-p(y | x; w,b) = \frac{\exp(y(x^\top w + b))}{1 + \exp(y(x^\top w + b))}
+\frac{e^{1/2 y(x^\top w + b}}{e^{1/2 y(x^\top w + b)}} * \frac{1}{1+e^{-y (x^\top w + b)}}
 $$
-Then let $\tilde w = [w,b]$, $Z(x, \tilde w) = 1 + \exp(y(x^\top w + b)$ and $\phi(x,y) = [yx, y]$,
-then from my definition of $\tilde w$ the above probability is equivalent to 
 $$
- \frac{1}{Z(x,\tilde w)} e^{\phi(y,x)^\top \tilde w}
+= \frac{e^{1/2 y(x^\top w + b)}}{e^{1/2 y(x^\top w + b)} +e^{-1/2 y(x^\top w + b)} }
 $$
+
+Since $y \in \{1, -1\}$ this is equivalent to 
+$$
+\frac{e^{1/2 y(x^\top w + b)}}{e^{1/2(x^\top w + b)} +e^{-1/2(x^\top w + b)} }
+$$
+
+Then let $\tilde w = [w,b]$, $Z(x,\tilde w) = e^{1/2(x^\top w + b)} +e^{-1/2(x^\top w + b)}$ and $\phi(y,x) = [yx/2, y/2]$,
+
+Then the above is equivalent to 
+$$
+\frac{1}{Z(x,\tilde w)} e^{\phi(y,x)^\top \tilde w}
+$$
+and therefore the probability belongs to the exponential family.
+
 \color{black}
 
 \end{enumerate}
