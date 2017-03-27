@@ -2,8 +2,16 @@
 \title{HW 9}
 \date{3/27/17}
 \author{Max Horowitz-Gelb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{parskip}
+
 
 \begin{document}
+
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
 \maketitle
 \section*{Q1}
 \subsection*{a}
@@ -65,5 +73,106 @@ $$
 
 
 \section*{Q5}
+
+Let $X_1, ... X_N \in \{E, \bar E \}$ be a set of independent random variables representing whether each person is enthusiastic or not where $N$ is a Poisson random variable with mean 60.
+
+
+Then let $N_E = \lvert \{ X_i : X_i = E \} \rvert$ and
+$N_{\bar E} = \lvert \{ X_i : X_i = \bar E \}\rvert$ . Then since $X_1, ... X_N$ are iid, then $N_E \sim Poisson(40)$ and 
+$N_{\bar E} \sim Poisson(20)$
+
+Then let $Y_{E,1}, ... Y_{E,N_E}$ be the random variables of work done by enthusiastic workers and let $S_E = Y_{E,1}+ ...+ Y_{E,N_E}$.
+
+Then since $Y_{E,i}, N_E$ have finite mean and variance. 
+$$
+E[S_E] = E[N_E] \cdot E[Y_{E,i}] = 40 * 10 = 400
+$$
+$$
+Var[S_E] = E[N_E] * E[Y_{W,i}^2] = 40 * (25 + 100) = 5625
+$$
+
+Then let $Y_{\bar E,1}, ..., Y_{\bar{E},N_{\bar E}}$ be the random variables of work done by lazy workers and let 
+$S_{\bar E} = Y_{\bar E,1}+ ...+ Y_{\bar E,N_{\bar E}}$.
+
+Then since $Y_{\bar E, i}, N_{\bar E}$ have finite mean and variance.
+
+$$
+E[S_{\bar E}] = E[N_{\bar E}] \cdot E[Y_{\bar E, i}] = 20 * 3 = 60
+$$
+$$
+Var[S_{\bar E}] = E[N_{\bar E}] * E[Y_{\bar E, i}^2] = 20 (4 + 9) = 260
+$$
+
+Then let $S = S_E + S_{\bar E}$ be the total number of cans picked up.
+Then since $S_E \bot S_{\bar E}$
+
+$$
+E[S] = E[S_E] + E[S_{\bar E}] = 400 + 60 = 460
+$$
+
+$$
+Var(S) = Var(S_E) + Var(S_{\bar E}) = 5625 + 260 = 5885
+$$
+$$
+Stdev(S) = 76.71375
+$$
+
+\section*{Q6}
+Let $N_T(t), N_S(t) $ be the number of trout and salmon caught after time $t$ respectively. Since the probability of each catch being a trout or a salmon is independent of other catches, then $N_T(t)$ and $N_S(t)$ are two independent Poisson process, with 
+
+$N_T(t) \sim Poisson(0.6 * 2 * t), \qquad N_S(t) \sim Poisson(0.4 * 2 * t)$
+
+So, 
+$$
+P(N_T(2.5) = 2, N_S(2.5)) = f_{Poisson(3)}(2)*f_{Poisson(2)}(1) = 0.06064
+$$
+
+\section*{Q7}
+\subsection*{a}
+Since whether she writes a speeding or a DWI ticket is independent of all other tickets. We can represent the tickets she writes by two independent Poisson processes. 
+Let $N_{S}(t), N_{D}(t)$ be two independent Poisson processes of the number of speeding and DWI tickets written after time $t$ respectively. 
+Then
+$$
+N_S(t) \sim Poisson((2/3) * 6 * t) \qquad N_D(t) \sim Poisson((1/3) * 6 * t)
+$$  
+
+Then let $S_S(t) = 100 * N_S(t)$ be the total revenue made from speeding tickets after time $t$. 
+
+Then, 
+$$E[S_S(1)] = 100 * E[N_S(1)] = 100 * 4 = 400$$
+and,
+$$Var(S_S(1)) = 100^2 * Var(N_S(1)) = 100^2 4 = 40000
+$$
+
+Then let $S_D(t) = 400 * N_D(t)$ be the the the total revenue made from DWI tickets after time $t$,
+
+Then,
+$$
+E[S_D(1)] = 400 * E[N_D(t)] = 400 *2 = 800
+$$
+and,
+$$
+Var(S_D(1)] = 400^2 Var(N_D(t)) = 400^2 * 2 = 320000
+$$
+
+Then let $S(t) = S_D(t) + S_S(t)$ be the total revenue made after time $t$.
+
+Then since $S_D(t) \bot S_S(t)$,
+
+$$
+E[S(1)] = E[S_D(1)] + E[S_S(1)] = 400 + 800 = 1200
+$$
+and,
+$$
+Var(S(1)) = Var(S_D(1)) + Var(S_S(1)) =  40000 + 320000 = 360000
+$$
+$$
+Stdev(S(1)) = 600
+$$
+
+\subsection*{b}
+
+
+
 
 \end{document}
