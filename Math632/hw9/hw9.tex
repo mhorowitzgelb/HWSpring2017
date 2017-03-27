@@ -5,4 +5,25 @@
 
 \begin{document}
 \maketitle
+\section*{Q1}
+\subsection*{a}
+Let $T_0 = 0$ represent the time at 8 AM. Then the probability that no people show up from 8 to 10 AM is equal to 
+$$
+P(T_1-T_0 > 2) = 1 - F_{exp(3)}(2) = 0.00248
+$$ 
+
+\subsection*{b}
+$T_n$ is a Poisson process with rate 3 so by definition, $T_1 - T_0 \sim exp(3)$
+
+\section*{Q2}
+\subsection*{a}
+Let $T_n$ be a Poisson process of cars passing through. Then let $T_0 = 0$ be the last time a car passed before the dear crosses the road. Then let $\alpha \geq 0$ be the time at which the dear crosses the road.
+Then the probability that a car hits the dear is equivalent to 
+$$
+P(T_{k} - \alpha < 1/12)
+$$ where $T_k = min\{T_n : T_n > \alpha\}$
+Because of the memoryless of the exponential distribution this is equal to, 
+$$
+\sum_{i > 0} p(k = i)(F_{exp(6)}(1/12) = (F_{exp(6)}(1/12) \sum_{i > 0} p(k = i) = (F_{exp(6)}(1/12) = 0.39347
+$$
 \end{document}
