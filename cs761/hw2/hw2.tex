@@ -220,6 +220,23 @@ Then since $z_1, z_2$ are constrained and $z_3, z_4$ are free, then by setting $
 Consider the following process.  A probability vector $p=(p_1, \ldots, p_d)$ is drawn from a Dirichlet distribution with parameter vector $\alpha$.
 Then, a vector of category counts $x=(x_1, \ldots, x_d)$ is drawn from a multinomial distribution with probability vector $p$ and number of trials $N$. Give an analytic form of $P(x \mid \alpha)$.  
 
+\color{blue}
+Since our $p$ vector is random then
+
+$$P(x | \alpha) = \int_p multinomial(x | p) * dirichlet(p|\alpha) dp $$
+$$
+=\frac{\Gamma(\sum_i \alpha_i)d!}{\prod_i\Gamma(\alpha_i)*\prod_i x_i !} \int_p \prod_i p_i ^ {\alpha_i -1} \prod_i p_i ^{x_i}
+$$
+$$
+=\frac{\Gamma(\sum_i \alpha_i)d!}{\prod_i\Gamma(\alpha_i)*\prod_i x_i !} \int_p \prod_i p_i ^ {\alpha_i + x_i -1} 
+$$
+We then noticed that the integral is that of an unormalized dirichlet pmf with $\alpha_i' = \alpha_i + x_i$
+Therefore the above becomes,
+$$
+\frac{\prod_i(\Gamma(a_i + x_i)\Gamma(\sum_i \alpha_i)d!}{\Gamma(\sum_i a_i + x+i) \prod_i\Gamma(\alpha_i)*\prod_i x_i !}
+$$
+
+\color{black}
 \item
 Let $X_1, X_2, \ldots, X_m$ be a random sample, where $X_i \sim U(0,\theta)$ the uniform distribution.
 \begin{itemize}
