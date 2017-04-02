@@ -33,7 +33,7 @@ $$
 P(X_m < X_h) * E[X_h] + P(X_h < X_m) * E[X_m] = 0.6 * 30 + 0.4 *20 =  26
 $$
 
-\section*{Q1}
+\section*{Q2}
 \subsection*{a}
 Since the exponential distribution is memory-less and the handyman acts independently of when the janitor last replaces the bulb then when a light-bulb is replaced, regardless of who replaces it, it's a Poisson race between the janitor and the handyman for who replaces the next bulb first. Therefore we can sum they're respective rates to get the total rate of bulbs replaced. 
 This is,
@@ -46,6 +46,60 @@ Since it is a Poisson race be the janitor and the handyman replacing the light, 
 $$
 \frac{\lambda_j}{\lambda_j + \lambda_h} = \frac{1/200}{1/200 + 0.01} = 1/3
 $$
+
+
+\section*{Q3}
+
+Since phone calls come in as a Poisson process and each phone call is independently selected as a 
+a local call with probability 3/4 then by thinning
+
+$M \sim 3/4 Poisson(12) = Poisson(9)$ , $N \sim 1/4 Poisson(12) = Poisson(3)$ and $M \bot N$
+
+Then assuming all phone calls last the expected amount of time, then at any time $t$ the distribution of people on the line is 
+$$
+N_M(t) - N_m(t - 10) + N_N(t) - N_N(t-5) = Poisson(90) + Poisson(15) = Poisson(105)
+$$
+
+
+
+\section*{Q4}
+
+\section*{a}
+Let $T1, T2$ be the arrival times of the first two customers. Then given that $N(5) = 2$ then by theorem 2.14, $\{T1,T2\}$ has the same distribution as $\{U1, U2\}$ which are $iid$ uniform random variables over the interval $[0,5]$. 
+
+Therefore the probability that they both arrived in the first two minutes is,
+$$
+P(T1 < T2 < 2) = P(U1 < 2, U2 < 2) = (2/5)^2 = 0.16
+$$
+
+\section*{b}
+
+And the probability that at least one arrived in the first two minutes is simply,
+$$
+P(U1 < 2 \cup U2 < 2) = 1 - P(U1 > 2, U2 > 2) = 1 - (3/5)^2 =  0.64
+$$
+
+\section*{Q5}
+Let each car $i$ be paired with an adjacent empty space and call the total space taken up by the pair $X_i$. Then the fraction of cars per foot of the first $n$ cars is equal to 
+$$ \frac{n}{\sum_{i = 1} ^n X_i}
+$$
+
+Then since $X_1 ... X_n$ are all $iid$ Uniform random variables bounded in $(10, 20)$ then by the strong law of large numbers,
+$$
+\frac{\sum_{i = 1} ^{n} X_i}{ n} \overset{as}{\to} E[X_1] = 15
+$$
+and therefore the fraction of cars per foot
+$$
+\frac{n} {\sum_{i=1}^n X_i} \overset{as}{\to} 1 / E[X_1 ] = 1/15
+$$
+
+\section*{Q6}
+Let $r_i$ be the length of car $i$ and $t_i$ be the length of car $i$ plus it's adjacent empty space. 
+And let $N(t)$ be equal to the number of cars in the first $t$ feet of street.
+Then since $(r_i, t_i)$ is a sequence of independent pairs we may apply theorem 3.3 to say that the fraction of the street filled with cars,
+$$
+\frac{\sum_{i=1}^{N(t)} r_i}{t} \overset{as}{\to} \frac{Er_1}{Et_1} = 10 / 15 = 2/3
+$$ 
 
 
 
