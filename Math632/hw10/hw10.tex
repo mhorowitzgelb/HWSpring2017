@@ -14,4 +14,39 @@
 
 \begin{document}
 \maketitle
+
+\section*{Q1}
+\subsection*{a}
+Let $X_h$ and $X_m$ distributed as exponentials with rate $\lambda_h, \lambda_m$, be the finish times  of the haircut and manicure respectively. 
+Since $X_h \bot X_m$, then,
+$$
+P(X_m < X_h) = \frac{\lambda_m}{\lambda_m + \lambda_h} = \frac{1/20}{1/20 + 1/30} = 0.6
+$$
+
+\subsection*{b}
+The expected amount of time before they both finish is 
+$$
+E[max(X_m, X_h)] = P(X_m < X_h) * E[X_h | X_m < X_h] + P(X_h < X_m) * E[X_m | X_h < X_m] 
+$$
+which because of independence is equal to ,
+$$
+P(X_m < X_h) * E[X_h] + P(X_h < X_m) * E[X_m] = 0.6 * 30 + 0.4 *20 =  26
+$$
+
+\section*{Q1}
+\subsection*{a}
+Since the exponential distribution is memory-less and the handyman acts independently of when the janitor last replaces the bulb then when a light-bulb is replaced, regardless of who replaces it, it's a Poisson race between the janitor and the handyman for who replaces the next bulb first. Therefore we can sum they're respective rates to get the total rate of bulbs replaced. 
+This is,
+$$
+\lambda = \lambda_h + \lambda_j = 1/200 + 0.01 = 0.015
+$$
+
+\subsection*{b}
+Since it is a Poisson race be the janitor and the handyman replacing the light, then the fraction of times in the long run the the janitor replaces a bulb that just broke is,
+$$
+\frac{\lambda_j}{\lambda_j + \lambda_h} = \frac{1/200}{1/200 + 0.01} = 1/3
+$$
+
+
+
 \end{document}
