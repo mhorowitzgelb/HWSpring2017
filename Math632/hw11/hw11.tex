@@ -198,5 +198,25 @@ $$
 Solving for this we get that $k = 20$ minimizes the cost per hour. 
 
 \section*{Q8}
+Since $N(t)$ is a Poisson process then,
+$$
+P(X_t = j | X_{t-\alpha} = i, past) = P(N(t^2) = j | N((t-\alpha)^2), past)
+$$
+can be simplified to just
+$$
+P(N(t^2) = j | N((t-\alpha)^2)) = P(X_t = j | X_{t-\alpha} = i)
+$$
 
+Therefore $X_t$ has the Markov property.
+However
+$
+P(X_t = j | X_{t-\alpha} = i) = P(X_t - X_{t-\alpha} = j-i)
+$
+
+$X_t - X_{t-\alpha}$ is a Poisson random variable with rate $(t^2 - (t-\alpha)^2)\lambda = (2t-\alpha^2)\lambda$
+Therefore 
+$$
+P(X_t = j | X_{t-\alpha} = i) = \frac{(2t-\alpha^2)\lambda^{j-i}e^{-(2t-\alpha^2)\lambda}}{(j-i)!}
+$$
+This is a function of $t$ and therefore $X_t$ is not temporally homogeneous. 
 \end{document}
