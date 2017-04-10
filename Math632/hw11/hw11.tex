@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\title{HW 11}
+\author{Max Horowitz-Gelb}
+\date{4/9/17}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+Let $N(t)$ be the number of customer arrivals after time $t$. 
+Then since $F$ is independent of $G$ then by the expectation of a random sum,
+$$
+E[W(t)] = E[N(t)]\mu_G
+$$
+then our limit becomes
+$$
+\lim_{t \to \infty} \frac{E[N(t)]\mu_G}{t} 
+$$
+$$
+= \lim_{t \to \infty} \frac{E[N(t)]\mu_G}{N(t)}\frac{N(t)}{t}
+$$
+which by theorem 3.1 is
+$$
+\frac{\mu_G}{\mu_F} \lim_{t \to \infty} \frac{E[N(t)]}{N(t)} 
+$$
+which by Law of Large Numbers is simply
+$$
+\frac{\mu_G}{\mu_F}
+$$
+
+\section*{Q2}
+Each child's shooting time follows a geometric distribution with expected value $1/p_i$
+Then let $t_i$ be the total time for all the kids to shoot their $i^{th}$ time. 
+Then for arbitrary kid $j$ for time $i$ let 
+$s_i$ be the time it takes kid $j$ to get a basket and $u_i$  the total time it takes the other two kids to make their baskets. 
+Then since $(s_i, u_i)$ are independent, then by theorem 3.4 the limiting fraction of the time spent by player $j$ shooting is 
+$$
+E[s_i] / (E[u_i] + E[s_i])
+$$  
+
+so for $p_1 = 2/3, p_2 = 3/4, p_3 = 4/5$ 
+
+we have $t_1 = X_1 + X_2 + X_3$ where $X_1 \sim Geometric(2/3), X_2 \sim Geometric(3/4), X_3 \sim Geometric(4/5)$ 
+
+then expected fraction of the time player 1 is shooting is,
+$$
+E[X_1]/(E[X_1] + E[X_2 + X_3]) = \frac{3/2}{3/2 + 4/3 + 5/4} = 0.36735
+$$
+
+the expected fraction for player 2 is 
+$$
+0.32653
+$$
+
+and for player 3 is,
+$$
+0.30612
+$$
+
+\section*{Q3}
+\end{document}
