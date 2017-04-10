@@ -102,5 +102,34 @@ $$
 E[u_i] = E[u_1] = E[t_1] - E[r_1] = 1.25918
 $$
 
+\section*{Q5}
+\subsection*{a}
+Let $t_i = d_i + m_i$ describe the alternating plays, where $d_i$ is the amount of time Duke has the ball for the $i^{th}$ time and $m_i$ be the time that Miami has the ball for the $i^{th}$ time. 
+
+Since the $(d_i,u_i)$ tuples are independent of each other we apply theorem 3.4 to say that the limiting fraction of time Duke has the ball is
+$$
+\frac{E[d_1]}{E[d_1] + E[m_1]} = 2 / 8 = 1/4
+$$
+
+\subsection{b}
+
+
+Let $sd_i, sm_i \in \{0,1\}$ be whether Duke or Miami scores at alternation $i$.
+
+The rate of alternations is 
+$$
+1/E[t_1] = 1/8 = E[N(1)]
+$$
+where $N(t)$ is the number of paired plays that have happened after time $t$
+Then since $t_i$ are iid
+$$
+E[N(60)] = 60/8 = 15/2
+$$
+
+Then since $N(t) \bot (sm_i, sd_i)$ the expected number of scores per hour is,
+$$
+E \bigg[\sum_{i=1}^{N(60)} sm_i + dm_i \bigg] = E[N(60)]E[sm_i + dm_i] = 15/2 * (1/4 + 1) = 9.375
+$$
+
 
 \end{document}
