@@ -1,4 +1,10 @@
 \documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{parskip}
+
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
 
 \title{HW 11}
 \author{Max Horowitz-Gelb}
@@ -111,7 +117,7 @@ $$
 \frac{E[d_1]}{E[d_1] + E[m_1]} = 2 / 8 = 1/4
 $$
 
-\subsection{b}
+\subsection*{b}
 
 
 Let $sd_i, sm_i \in \{0,1\}$ be whether Duke or Miami scores at alternation $i$.
@@ -131,5 +137,66 @@ $$
 E \bigg[\sum_{i=1}^{N(60)} sm_i + dm_i \bigg] = E[N(60)]E[sm_i + dm_i] = 15/2 * (1/4 + 1) = 9.375
 $$
 
+\section*{Q6}
+Profit for each year is just function of $X_k$
+$$
+P_k = 100,000 *(1 - exp(X_k/100))
+$$
+Since the $X_k$ are iid then the $P_k$ are independent. 
+
+Then since $X_k$ is bounded, then clearly $P_k$ has finite mean and variance and using the Law of Large numbers 
+$$
+\frac{1}{n} \sum_{k=1}^n P_k \to E[P_1] = 1/5 \sum_{i=1}^5 100,000 *( exp(X_k/100) -1) = 3055.76
+$$
+
+\section*{Q7}
+Let $T_1, ... T_k$ be the arrival times of the first $k$ students after the last tour that started at time $T_0$. Clearly these arrival times follow a Poisson process with rate $1$ 
+Assume without loss of generality that $T_0 = 0$ since if not we may simply subtract $T_0$ from $T_1, ... , T_k$ and get equivalently distributed random variables. 
+The expected cost of the tour is equal to 
+$$
+20 + E\bigg[ 0.1 \sum_{i = 1}^k T_k - T_i \bigg]
+$$
+$$
+= 20 + 0.1*E[T_k - T_k] + 0.1*E\bigg[ \sum_{i = 1}^{k-1} T_k - T_i \bigg]
+$$
+$$
+= 20 + 0.1 * \int_{t_k = 0} ^ \infty f_{T_k}(t_k) * E\bigg[ \sum_{i = 1}^{k-1} T_k - T_i \bigg| T_k = t_k\bigg] dt_k
+$$
+Where $f_{T_k}$ is the PDF of an exponential with rate $1/k$.
+
+Since the $T_i$'s are a Poisson process then given $T_k$, the set
+$\{T_k - T_1,..., T_k - T_{k-1}\}$ has the same distribution as the set $\{U_1, ... U_{k-1}\}$ where the $U_i$'s are iid uniformly distributed random variables over $[0,T_k]$
+Therefore the above is equivalent to 
+$$
+20 + 0.1 * \int_{t_k = 0} ^ \infty f_{T_k}(t_k) * 0.1*E\bigg[ \sum_{i = 1}^{k-1} U_i \bigg| T_k = t_k\bigg] dt_k
+$$
+$$
+= 20 + 0.1 * \int_{t_k = 0} ^ \infty f_{T_k}(t_k) * (k-1) * t_k/2 dt_k
+$$
+$$
+= 20 + 0.1 * \frac{k-1}{2}*\int_{t_k = 0} ^ \infty f_{T_k}(t_k) * t_k dt_k
+$$
+$$
+= 20 + 0.1* \frac{k-1}{2}*E[T_k]
+$$
+$$
+= 20 + 0.1 * \frac{k(k-1)}{2}
+$$
+This can be treated as our expected reward in a renewal process. And our expected time between renewals is simply
+$$
+E[T_k] = k
+$$
+Therefore our limiting fraction of cost per hour is
+$$
+\frac{20}{k} + 0.1*\frac{k-1}{2}
+$$
+This is a convex function on $\mathbb{R}^+$
+So if we take the first derivative
+$$
+-20k^{-2} + 0.1/2 = 0
+$$
+Solving for this we get that $k = 20$ minimizes the cost per hour. 
+
+\section*{Q8}
 
 \end{document}
