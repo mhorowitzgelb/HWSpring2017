@@ -20,17 +20,21 @@
 Let $X_h$ and $X_m$ distributed as exponentials with rate $\lambda_h, \lambda_m$, be the finish times  of the haircut and manicure respectively. 
 Since $X_h \bot X_m$, then,
 $$
-P(X_m < X_h) = \frac{\lambda_m}{\lambda_m + \lambda_h} = \frac{1/20}{1/20 + 1/30} = 0.6
+P(X_m < X_h) = \frac{\lambda_m}{\lambda_m + \lambda_h} = 20 + 30 - (\frac{1}{20} + \frac{1}{30})^{-1} =  38
 $$
 
 \subsection*{b}
-The expected amount of time before they both finish is 
+The amount of time before they both finish is,
+
 $$
-E[max(X_m, X_h)] = P(X_m < X_h) * E[X_h | X_m < X_h] + P(X_h < X_m) * E[X_m | X_h < X_m] 
+max(X_m,X_h) = X_m + X_h - min(X_m,X_h)
 $$
-which because of independence is equal to ,
+
+$min(X_m, X_h)$ is just simply an exponential with rate $\lambda_h + \lambda_m$
+
+so the expected time before they both finish is
 $$
-P(X_m < X_h) * E[X_h] + P(X_h < X_m) * E[X_m] = 0.6 * 30 + 0.4 *20 =  26
+E[max(X_m, X_h)] = E[X_m] + E[X_h] - E[min(X_m, X_h) = \frac{1}{20} + \frac{1}{30} - \frac{1}{1/20 + 1/30} = 
 $$
 
 \section*{Q2}

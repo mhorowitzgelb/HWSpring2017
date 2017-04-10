@@ -29,6 +29,7 @@ $$
 $$
 
 \section*{Q2}
+\subsection*{a}
 Each child's shooting time follows a geometric distribution with expected value $1/p_i$
 Then let $t_i$ be the total time for all the kids to shoot their $i^{th}$ time. 
 Then for arbitrary kid $j$ for time $i$ let 
@@ -38,6 +39,7 @@ $$
 E[s_i] / (E[u_i] + E[s_i])
 $$  
 
+\subsection*{b}
 so for $p_1 = 2/3, p_2 = 3/4, p_3 = 4/5$ 
 
 we have $t_1 = X_1 + X_2 + X_3$ where $X_1 \sim Geometric(2/3), X_2 \sim Geometric(3/4), X_3 \sim Geometric(4/5)$ 
@@ -58,4 +60,47 @@ $$
 $$
 
 \section*{Q3}
+\subsection*{a}
+
+Let $t_i = d_i + w_i$ where $d_i$ is the time it takes to deal out the $i_{th}$ baggy of coke, and $d_i \sim G$ is the time the dealer must wait until another customer arrives. Since a Poisson process is memory-less, $w_i \sim exp(\lambda)$
+
+Then since the $t_i$ are independent
+$$E[t_i] = E[t_1] = E[d_1] + 1/\lambda$$ 
+
+and the rate at which the dealer makes sales is
+$$
+\frac{1}{E[d_1] + 1/\lambda}
+$$
+
+\subsection*{b}
+Let $N(t), N_s(t), N_n(t)$ be the customers who arrived, who received a sale and who did not receive a sale after time $t$ respectively. 
+
+Then the limiting fraction of customers who did not receive a sale is 
+$$
+\lim_{t \to \infty} \frac{N_n(t)}{N(t)}
+=
+\lim_{t \to \infty} \frac{N(t) - N_s(t)}{N(t)} = 1 - \lim_{t \to \infty} \frac{N_s(t)}{N(t)}
+$$
+$$
+= 1 - \lim_{t \to \infty} \frac{N_s(t)}{t}\frac{t}{N(t)}
+$$
+which by theorem 3.1 and what we've shown previously in part a becomes,
+$$
+1 - \frac{1}{E[d_1] + 1/\lambda} \frac{1}{\lambda}
+$$
+
+\section*{Q4}
+\subsection*{a}
+Let $t_i \sim exp(0.5)$ the time of interval $i$ and let $t_i = r_i + s_i$ where $r_i$ is the amount of sleep had in interval $i$ and is equal to $max(t_i - 0.6, 0)$ 
+Since $(r_i, s_i)$ are independent then by theorem 3.4 the limiting fraction of time sleeping is
+$$
+\frac{E[r_1]}{E[r_1] + E[u_1]} = \frac{E[r_1]}{E[t_1]} = \frac{P(t_1>0.6)E[t_1 - 0.6| t_1 > 0.6]}{E[t_1]} = P(t_1 > 0.6) = 0.74082
+$$
+\subsection*{b}
+Because of independence of the $(r_i, u_i)$  the expected time awake is
+$$
+E[u_i] = E[u_1] = E[t_1] - E[r_1] = 1.25918
+$$
+
+
 \end{document}
