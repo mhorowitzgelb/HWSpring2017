@@ -92,7 +92,7 @@ $$
 $$
 which by theorem 3.1 and what we've shown previously in part a becomes,
 $$
-1 - \frac{1}{E[d_1] + 1/\lambda} \frac{1}{\lambda}
+1 - \frac{1}{E[d_1] + 1/\lambda} \frac{1}{\lambda} = \frac{E[d_1]}{E[d_1] + 1/\lambda}
 $$
 
 \section*{Q4}
@@ -103,7 +103,7 @@ $$
 \frac{E[r_1]}{E[r_1] + E[u_1]} = \frac{E[r_1]}{E[t_1]} = \frac{P(t_1>0.6)E[t_1 - 0.6| t_1 > 0.6]}{E[t_1]} = P(t_1 > 0.6) = 0.74082
 $$
 \subsection*{b}
-Because of independence of the $(r_i, u_i)$  the expected time awake is
+Because the $(r_i, u_i)$ iid the expected time awake is
 $$
 E[u_i] = E[u_1] = E[t_1] - E[r_1] = 1.25918
 $$
@@ -138,15 +138,15 @@ E \bigg[\sum_{i=1}^{N(60)} sm_i + dm_i \bigg] = E[N(60)]E[sm_i + dm_i] = 15/2 * 
 $$
 
 \section*{Q6}
-Profit for each year is just function of $X_k$
+We may simply treat this problem as a renewal process where the reward $r_k$
+dependent on a random draw $X_k$ is equal to
 $$
-P_k = 100,000 *(1 - exp(X_k/100))
+X_k * 100,000 * (exp(X_k/100) - 1)
 $$
-Since the $X_k$ are iid then the $P_k$ are independent. 
-
-Then since $X_k$ is bounded, then clearly $P_k$ has finite mean and variance and using the Law of Large numbers 
+which is the profit made on CD $k$, which lasts for $t_k = X_k$ years. 
+Then since the $(t_k, r_k)$ are independent, by theorem 3.3 , our limiting fraction on profit per year converges such that,
 $$
-\frac{1}{n} \sum_{k=1}^n P_k \to E[P_1] = 1/5 \sum_{i=1}^5 100,000 *( exp(X_k/100) -1) = 3055.76
+R(t)/t \to \frac{E[r_1]}{E[t_1]} = \frac{1/5 *\sum_{i = 1}^5  100,000 * (exp(i^2/100) - 1)}{1/5 \sum_{i=1}^5 i} =  4017.14342
 $$
 
 \section*{Q7}
