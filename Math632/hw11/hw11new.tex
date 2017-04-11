@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{parskip}
+
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
+\title{HW 11}
+\author{Max Horowitz-Gelb}
+\date{4/9/17}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+Let $N(t)$ be the number of customer arrivals after time $t$. 
+Then since $F$ is independent of $G$ then by the expectation of a random sum,
+$$
+E[W(t)] = E[N(t)]\mu_G
+$$
+then our limit becomes
+$$
+\lim_{t \to \infty} \frac{E[N(t)]\mu_G}{t} 
+$$
+$$
+= \lim_{t \to \infty} \frac{E[N(t)]\mu_G}{N(t)}\frac{N(t)}{t}
+$$
+which by theorem 3.1 is
+$$
+\frac{\mu_G}{\mu_F} \lim_{t \to \infty} \frac{E[N(t)]}{N(t)} 
+$$
+which by Law of Large Numbers is simply
+$$
+\frac{\mu_G}{\mu_F}
+$$
+
+\section*{Q2}
+\subsection*{a}
+Each child's shooting time follows a geometric distribution with expected value $1/p_i$
+Then let $t_i$ be the total time for all the kids to shoot their $i^{th}$ time. 
+Then for arbitrary kid $j$ for time $i$ let 
+$s_i$ be the time it takes kid $j$ to get a basket and $u_i$  the total time it takes the other two kids to make their baskets. 
+Then since $(s_i, u_i)$ are independent, then by theorem 3.4 the limiting fraction of the time spent by player $j$ shooting is 
+$$
+E[s_i] / (E[u_i] + E[s_i])
+$$  
+
+\subsection*{b}
+so for $p_1 = 2/3, p_2 = 3/4, p_3 = 4/5$ 
+
+we have $t_1 = X_1 + X_2 + X_3$ where $X_1 \sim Geometric(2/3), X_2 \sim Geometric(3/4), X_3 \sim Geometric(4/5)$ 
+
+then expected fraction of the time player 1 is shooting is,
+$$
+E[X_1]/(E[X_1] + E[X_2 + X_3]) = \frac{3/2}{3/2 + 4/3 + 5/4} = 0.36735
+$$
+
+the expected fraction for player 2 is 
+$$
+0.32653
+$$
+
+and for player 3 is,
+$$
+0.30612
+$$
+
+\section*{Q3}
+\subsection*{a}
+
+Let $t_i = d_i + w_i$ where $d_i$ is the time it takes to deal out the $i_{th}$ baggy of coke, and $d_i \sim G$ is the time the dealer must wait until another customer arrives. Since a Poisson process is memory-less, $w_i \sim exp(\lambda)$
+
+Then since the $t_i$ are independent
+$$E[t_i] = E[t_1] = E[d_1] + 1/\lambda$$ 
+
+and the rate at which the dealer makes sales is
+$$
+\frac{1}{E[d_1] + 1/\lambda}
+$$
+
+\subsection*{b}
+Let $N(t), N_s(t), N_n(t)$ be the customers who arrived, who received a sale and who did not receive a sale after time $t$ respectively. 
+
+Then the limiting fraction of customers who did not receive a sale is 
+$$
+\lim_{t \to \infty} \frac{N_n(t)}{N(t)}
+=
+\lim_{t \to \infty} \frac{N(t) - N_s(t)}{N(t)} = 1 - \lim_{t \to \infty} \frac{N_s(t)}{N(t)}
+$$
+$$
+= 1 - \lim_{t \to \infty} \frac{N_s(t)}{t}\frac{t}{N(t)}
+$$
+which by theorem 3.1 and what we've shown previously in part a becomes,
+$$
+1 - \frac{1}{E[d_1] + 1/\lambda} \frac{1}{\lambda}
+$$
+
+\section*{Q4}
+\subsection*{a}
+Let $t_i \sim exp(0.5)$ the time of interval $i$ and let $t_i = r_i + s_i$ where $r_i$ is the amount of sleep had in interval $i$ and is equal to $max(t_i - 0.6, 0)$ 
+Since $(r_i, s_i)$ are independent then by theorem 3.4 the limiting fraction of time sleeping is
+$$
+\frac{E[r_1]}{E[r_1] + E[u_1]} = \frac{E[r_1]}{E[t_1]} = \frac{P(t_1>0.6)E[t_1 - 0.6| t_1 > 0.6]}{E[t_1]} = P(t_1 > 0.6) = 0.74082
+$$
+\subsection*{b}
+Because of independence of the $(r_i, u_i)$  the expected time awake is
+$$
+E[u_i] = E[u_1] = E[t_1] - E[r_1] = 1.25918
+$$
+
+\section*{Q5}
+\subsection*{a}
+Let $t_i = d_i + m_i$ describe the alternating plays, where $d_i$ is the amount of time Duke has the ball for the $i^{th}$ time and $m_i$ be the time that Miami has the ball for the $i^{th}$ time. 
+
+Since the $(d_i,u_i)$ tuples are independent of each other we apply theorem 3.4 to say that the limiting fraction of time Duke has the ball is
+$$
+\frac{E[d_1]}{E[d_1] + E[m_1]} = 2 / 8 = 1/4
+$$
+
+\subsection*{b}
+
+
+Let $sd_i, sm_i \in \{0,1\}$ be whether Duke or Miami scores at alternation $i$.
+
+The rate of alternations is 
+$$
+1/E[t_1] = 1/8 = E[N(1)]
+$$
+where $N(t)$ is the number of paired plays that have happened after time $t$
+Then since $t_i$ are iid
+$$
+E[N(60)] = 60/8 = 15/2
+$$
+
+Then since $N(t) \bot (sm_i, sd_i)$ the expected number of scores per hour is,
+$$
+E \bigg[\sum_{i=1}^{N(60)} sm_i + dm_i \bigg] = E[N(60)]E[sm_i + dm_i] = 15/2 * (1/4 + 1) = 9.375
+$$
+
+\section*{Q6}
+Profit for each year is just function of $X_k$
+$$
+P_k = 100,000 *(1 - exp(X_k/100))
+$$
+Since the $X_k$ are iid then the $P_k$ are independent. 
+
+Then since $X_k$ is bounded, then clearly $P_k$ has finite mean and variance and using the Law of Large numbers 
+$$
+\frac{1}{n} \sum_{k=1}^n P_k \to E[P_1] = 1/5 \sum_{i=1}^5 100,000 *( exp(X_k/100) -1) = 3055.76
+$$
+
+\section*{Q7}
+Let $T_1, ... T_k$ be the arrival times of the first $k$ students after the last tour that started at time $T_0$. Clearly these arrival times follow a Poisson process with rate $1$ 
+Assume without loss of generality that $T_0 = 0$ since if not we may simply subtract $T_0$ from $T_1, ... , T_k$ and get equivalently distributed random variables. 
+The expected cost of the tour is equal to 
+$$
+20 + E\bigg[ 0.1 \sum_{i = 1}^k T_k - T_i \bigg]
+$$
+$$
+= 20 + 0.1*E[T_k - T_k] + 0.1*E\bigg[ \sum_{i = 1}^{k-1} T_k - T_i \bigg]
+$$
+$$
+= 20 + 0.1 * \int_{t_k = 0} ^ \infty f_{T_k}(t_k) * E\bigg[ \sum_{i = 1}^{k-1} T_k - T_i \bigg| T_k = t_k\bigg] dt_k
+$$
+Where $f_{T_k}$ is the PDF of an exponential with rate $1/k$.
+
+Since the $T_i$'s are a Poisson process then given $T_k$, the set
+$\{T_k - T_1,..., T_k - T_{k-1}\}$ has the same distribution as the set $\{U_1, ... U_{k-1}\}$ where the $U_i$'s are iid uniformly distributed random variables over $[0,T_k]$
+Therefore the above is equivalent to 
+$$
+20 + 0.1 * \int_{t_k = 0} ^ \infty f_{T_k}(t_k) * 0.1*E\bigg[ \sum_{i = 1}^{k-1} U_i \bigg| T_k = t_k\bigg] dt_k
+$$
+$$
+= 20 + 0.1 * \int_{t_k = 0} ^ \infty f_{T_k}(t_k) * (k-1) * t_k/2 dt_k
+$$
+$$
+= 20 + 0.1 * \frac{k-1}{2}*\int_{t_k = 0} ^ \infty f_{T_k}(t_k) * t_k dt_k
+$$
+$$
+= 20 + 0.1* \frac{k-1}{2}*E[T_k]
+$$
+$$
+= 20 + 0.1 * \frac{k(k-1)}{2}
+$$
+This can be treated as our expected reward in a renewal process. And our expected time between renewals is simply
+$$
+E[T_k] = k
+$$
+Therefore our limiting fraction of cost per hour is
+$$
+\frac{20}{k} + 0.1*\frac{k-1}{2}
+$$
+This is a convex function on $\mathbb{R}^+$
+So if we take the first derivative
+$$
+-20k^{-2} + 0.1/2 = 0
+$$
+Solving for this we get that $k = 20$ minimizes the cost per hour. 
+
+\section*{Q8}
+Since $N(t)$ is a Poisson process then,
+$$
+P(X_t = j | X_{t-\alpha} = i, past) = P(N(t^2) = j | N((t-\alpha)^2), past)
+$$
+can be simplified to just
+$$
+P(N(t^2) = j | N((t-\alpha)^2)) = P(X_t = j | X_{t-\alpha} = i)
+$$
+
+Therefore $X_t$ has the Markov property.
+However
+$
+P(X_t = j | X_{t-\alpha} = i) = P(X_t - X_{t-\alpha} = j-i)
+$
+
+$X_t - X_{t-\alpha}$ is a Poisson random variable with rate $(t^2 - (t-\alpha)^2)\lambda = (2t-\alpha^2)\lambda$
+Therefore 
+$$
+P(X_t = j | X_{t-\alpha} = i) = \frac{(2t-\alpha^2)\lambda^{j-i}e^{-(2t-\alpha^2)\lambda}}{(j-i)!}
+$$
+This is a function of $t$ and therefore $X_t$ is not temporally homogeneous.
+
+
+\end{document}
