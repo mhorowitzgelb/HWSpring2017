@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\title{HW 12}
+\author{Max Horowitz-Gelb}
+\date{4/17/17}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+\subsection*{(1)}
+Since $\lambda_i = \sum_{i \neq j} q(i,j)$ then
+$$
+\lambda_i = q(i,i+1) + q(i, i-1) = \lambda + \mathbf{1}_{\{0 \leq i \leq s\}}i\mu + \mathbf{1}_{\{i \geq s\}}s\mu 
+$$
+
+\subsection*{(2)}
+Then,
+$$
+Q(i,j) = 
+\begin{cases}
+\lambda & j = i +1 \\
+i \mu  & 0 \leq i \leq s, \qquad j = i -1 \\
+s \mu & i \geq s, \qquad j = i -1 \\
+-\lambda_i & i = j 
+\end{cases}
+$$
+
+\section*{Q2}
+Let $\lambda$ be the rate of $N(t)$.
+First note that clearly 
+$q(i,j) = 0$ for $i -j \geq 2$ or $j < i$
+then for $j = i + 1$
+$$
+q(i,j) = \lim_{t \to 0} \frac{e^{-\lambda t}(\lambda t)^{j-i}}{(j-i)! t} = \lim_{t \to 0} \frac{e^{-\lambda t}\lambda t}{t} = \lambda
+$$
+
+Then we have
+$$
+Q(i,j) = \begin{cases}
+\lambda & j = i +1 \\
+-\lambda & j = i \\
+0 & else
+\end{cases}
+$$
+
+
+\end{document}
