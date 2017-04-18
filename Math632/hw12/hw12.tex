@@ -45,5 +45,97 @@ Q(i,j) = \begin{cases}
 \end{cases}
 $$
 
+Then by the backward Kolmogorov equation 
+$$
+p'_t = Qp_t
+$$
+This is a partial differential equation whose solution is 
+$$
+p_t = e^{tQ}
+$$
+
+\section*{Q3}
+
+First note that for $i \neq j$
+$$
+q(i,j) = \lim_{t \to 0} \frac{p_t(i,j) u(i,j)}{t}
+$$
+which by what we have shown in two is equal to simply $\lambda u(i,j)$
+Then $Q$ is 
+$$
+Q(i,j) = \begin{cases}
+\lambda u(i,j) & i \neq j \\
+-\sum_{k \neq j} \lambda u(j,k) & i = j 
+\end{cases} 
+$$
+
+Then 
+$$
+p'_t(i,j) =  \lim_{h \to 0} \frac{p_{t+h}(i,j) - p_t(i,j)}{h}
+$$
+$$
+= \lim_{h \to 0} \frac{\sum_{k} \big(p_t(i,k) p_h(k,h)\big) - p_t(i,j)}{h}
+$$
+$$
+= \lim_{h \to 0} \frac{\sum_{k\neq j} \big(p_t(i,k) p_h(k,h)\big) + p_t(i,j)(p_h(j,j)-1)}{h}
+$$
+$$
+= \lim_{h \to 0} \frac{\sum_{k\neq j} \big(p_t(i,k) p_h(k,h)\big)}{h} + \lim_{h \to 0} \frac{p_t(i,j)(p_h(j,j)-1)}{h}
+$$
+$$
+= \sum_{k\neq j} p_t(i,k) q(k,h) - \lim_{h \to 0} \frac{p_t(i,j)(\sum_{k\neq j} p_h(j,k)}{h}
+$$
+$$
+= \sum_{k\neq j} p_t(i,k) q(k,h)  + p_t(i,j)(-\sum_{k\neq j} q(j,k))
+$$
+$$
+= \sum_{k\neq j} p_t(i,k) \lambda u(k,j)  + p_t(i,j)\big(-\sum_{k\neq j} \lambda u(j,k)\big)
+$$
+$$
+= p_t(i,\cdot) Q(\cdot,j)
+$$
+
+\section*{Q4}
+Let $L$ be the event that an inpatient person leaves, $B$ the event that a bank teller finishes with someone and $A$ the event that a new person enters the bank. 
+First note that even with this new addition to the problem, still $q(i,j) = 0$ for $j - i \geq 2$. 
+
+Then 
+$$
+q(n, n+1) = \lim_{t \to 0} \frac{P(A)}{t} = \frac{e^{-\lambda t}\lambda t}{t}  =\lambda
+$$
+and
+$$
+q(n, n-1) = \lim_{t \to 0} \frac{P(L, \bar{B}) + P(B, \bar{L})}{t} 
+$$
+as $t$ goes to 0 the $P(\bar{B}) \to P(\bar{L}) \to 0$ so the above becomes 
+$$
+\lim_{t \to 0} \frac{P(L) + P(B)}{t} 
+$$
+
+$$
+= \lim_{t \to 0} \frac{ \bigg( e^{-\max(n-s,0)\xi t} \max(n-s,0)\xi t \bigg ) + 
+\bigg( e^{-\min(n,s)\mu t} \min(n,s)\mu t \bigg)}{t}
+$$
+$$
+= \max(n-s,0)\xi + \min(n,s)\mu
+$$
+We might think that $q(n, n+2) > 0$, but this is not true
+since it would require $L$ and $B$ to happen at the exact same time,
+$$
+lim_{t \to 0} \frac{P_t(L, B)}{t} = lim_{t \to 0} \frac{P_t(L)P_t(B)}{t} 
+$$
+$$
+= lim_{t \to 0}\frac{e^{-\xi\mu \min(n,s) \max(n-s,0) t^2}t^2 \xi \mu \min(n,s) \max(n-s,0)}{t} = 0
+$$
+
+Therefore,
+$$
+Q(i,j) = \begin{cases}
+\lambda & j = i +1 \\
+\max(i-s,0)\xi + \min(i,s)\mu & j = i -1\\
+0 & |i-j| \geq 2 \\
+-\lambda - \max(i-s,0)\xi - \min(i,s)\mu & i = j
+\end{cases}
+$$
 
 \end{document}
