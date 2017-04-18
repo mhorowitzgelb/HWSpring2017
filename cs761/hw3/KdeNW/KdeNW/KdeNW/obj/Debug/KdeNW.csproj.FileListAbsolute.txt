@@ -1,1 +1,6 @@
 C:\Users\mhoro\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Debug\KdeNW.exe.config
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Debug\KdeNW.exe.config
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Debug\KdeNW.exe
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Debug\KdeNW.pdb
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\obj\Debug\KdeNW.exe
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\obj\Debug\KdeNW.pdb

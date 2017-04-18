@@ -85,7 +85,43 @@ Perform nonparametric kernel regression using the Nadaraya-Watson estimator on t
 Use the Gaussian kernel.
 Write your own code for the Nadaraya-Watson estimator.
 Show us the leave-one-out score (Equation 23 in lecture notes \url{http://pages.cs.wisc.edu/~jerryzhu/cs761/kde.pdf}) for bandwidth 
-$h=10^{-1}, 10^{-0.9}, 10^{-0.8}, \ldots, 10^2$, respectively. 
+$h=10^{-1}, 10^{-0.9}, 10^{-0.8}, \ldots, 10^2$, respectively.
+
+\color{red}
+\begin{verbatim}
+h = 10^-1, LeaveOneOut Score = NaN
+h = 10^-0.9, LeaveOneOut Score = 470.15966
+h = 10^-0.8, LeaveOneOut Score = 472.28524
+h = 10^-0.7, LeaveOneOut Score = 472.28526
+h = 10^-0.6, LeaveOneOut Score = 472.28526
+h = 10^-0.5, LeaveOneOut Score = 472.28511
+h = 10^-0.4, LeaveOneOut Score = 472.24836
+h = 10^-0.3, LeaveOneOut Score = 471.07843
+h = 10^-0.2, LeaveOneOut Score = 461.79288
+h = 10^-0.1, LeaveOneOut Score = 435.06801
+h = 10^0, LeaveOneOut Score = 398.43935
+h = 10^0.1, LeaveOneOut Score = 366.57279
+h = 10^0.2, LeaveOneOut Score = 343.70665
+h = 10^0.3, LeaveOneOut Score = 327.49724
+h = 10^0.4, LeaveOneOut Score = 315.25907
+h = 10^0.5, LeaveOneOut Score = 305.71688
+h = 10^0.6, LeaveOneOut Score = 298.58151
+h = 10^0.7, LeaveOneOut Score = 292.96769
+h = 10^0.8, LeaveOneOut Score = 287.56533
+h = 10^0.9, LeaveOneOut Score = 282.08339
+h = 10^1, LeaveOneOut Score = 277.3443
+h = 10^1.1, LeaveOneOut Score = 274.17402
+h = 10^1.2, LeaveOneOut Score = 272.96093
+h = 10^1.3, LeaveOneOut Score = 273.91815
+h = 10^1.4, LeaveOneOut Score = 277.05608
+h = 10^1.5, LeaveOneOut Score = 281.81211
+h = 10^1.6, LeaveOneOut Score = 287.40215
+h = 10^1.7, LeaveOneOut Score = 294.11911
+h = 10^1.8, LeaveOneOut Score = 302.82929
+h = 10^1.9, LeaveOneOut Score = 312.90299
+\end{verbatim}
+\color{black}
+ 
 \item
 For $h=10^{-1}, 10^{2}$ and the optimal $h$ you found, respectively,
 plot the function estimated by Nadaraya-Watson.
