@@ -10,6 +10,7 @@ namespace KdeNW
 {
     class Program
     {
+        public const  Double MIN_EXP = 1.2;
         static void Main(string[] args)
         {
             List<double> xVals = new List<double>();
@@ -29,15 +30,30 @@ namespace KdeNW
             }
             var xArr = xVals.ToArray();
             var yArr = yVals.ToArray();
+            var minScore = Double.PositiveInfinity;
+            var minExp = -1.0;
+            /*
             for (double exp = -1; exp <= 2; exp += 0.1)
             {
                 Math.Round(exp, 1);
 
                 var aligner = new KdeNW(xArr,yArr,Math.Pow(10,exp),new GaussianKernel());
                 var score = Math.Round(aligner.GetLeaveOneOutScore(),5);
+                if (score < minScore)
+                {
+                    minScore = score;
+                    minExp = exp;
+                }
                 Console.WriteLine("h = 10^"+exp+", LeaveOneOut Score = " + score );
             }
-            Console.WriteLine("Press ESC to stop");
+            
+            Console.WriteLine("Min score: " + minScore+ " Min Exp: " + minExp);
+            Console.WriteLine("Press ESC to stop");*/
+            var aligner = new KdeNW(xArr,yArr,Math.Pow(10,MIN_EXP),new GaussianKernel());
+            for (var year = 1855; year <= 2016; year++)
+            {
+                Console.WriteLine(year+","+aligner.GetYFor(year));
+            }
             do
             {
                 while (!Console.KeyAvailable)
@@ -45,6 +61,7 @@ namespace KdeNW
                     // Do something
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+
         }
 
         
