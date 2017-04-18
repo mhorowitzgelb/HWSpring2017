@@ -1,0 +1,6 @@
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Release\KdeNW.exe.config
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Release\KdeNW.exe
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\bin\Release\KdeNW.pdb
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\obj\Release\KdeNW.csprojResolveAssemblyReference.cache
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\obj\Release\KdeNW.exe
+C:\Users\brendanx\HWSpring2017\cs761\hw3\KdeNW\KdeNW\KdeNW\obj\Release\KdeNW.pdb
