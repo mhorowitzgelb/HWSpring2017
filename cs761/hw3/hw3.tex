@@ -155,6 +155,17 @@ Let $\sigma=40$ (note: this is the standard deviation, not variance).  Approxima
 Show six such random functions on the same plot, together with the mean function $m$.
 \item Do the same with $\sigma=10$.
 \item Do the same with $\sigma=1$.
+
+\hspace*{-4cm}
+\includegraphics[scale=1]{gp_40}
+
+\hspace*{-4cm}
+\includegraphics[scale=1]{gp_10}
+
+\hspace*{-4cm}
+\includegraphics[scale=1]{gp_1}
+
+
 \item
 Let $\sigma=40$.
 Now let us observe $f(40)=0$ and $f(120)=1$.
@@ -163,6 +174,16 @@ Again, show six such $f$ from the posterior on the same plot.
 
 \item Do the same with $\sigma=10$.
 \item Do the same with $\sigma=1$.
+
+\hspace*{-4cm}
+\includegraphics[scale=1]{gp_post_40}
+
+\hspace*{-4cm}
+\includegraphics[scale=1]{gp_post_10}
+
+\hspace*{-4cm}
+\includegraphics[scale=1]{gp_post_1}
+
 \end{enumerate}
 
 
@@ -172,8 +193,34 @@ Randomly throw the stick to the ground.
 Each time, the stick may or may not intersect with a line.
 \begin{enumerate}
 \item What is the probability that the stick intersects with a line?  Show your work.
-\item Propose a Monte Carlo method for estimating $\pi$ based on this.  
+
+\color{red}
+Let $\theta$ be the angle of the stick from the horizontal, and $\delta$ be the closest distance from the center of the stick to a line. Then
+if we assume $\theta \bot \delta$ and $\theta \sim Uniform(0,\pi) $ and $\delta \sim Uniform(0,a)$ then the probability that the stick intersects a line is
+$$
+P(\delta \leq a /2 sin(\theta)) = \int_0^\pi \int_0^{a/2\sin(\theta)} \frac{2}{a\pi} d \delta d\theta = 2/\pi
+$$
+
+\color{black}
+
+\item Propose a Monte Carlo method for estimating $\pi$ based on this. 
+
+\color{red}
+Let $X_1, X_2 , ... X_n$ be a random sample of binary variables where $1$ indicates dropping a stick resulting in it crossing a line. Then by the Law of large numbers as $n$ goes to infinity the sample mean, $\bar{X}_n$ converges in probability to $2/\pi$. So a method would be sample for large $n$ to acquire $\bar{X}_n$, 
+then $\pi \approx 2 * \bar{X}^{-1} $
+\color{black}
+
 \item Actually perform the experiment.  Tell us about it.
+
+\color{red}
+Note due to time constraints I was forced to simulate this experiment on the computer. I calculated $\bar{X}$ for a random sample of $100$ sticks and estimated 
+$$
+\pi \approx 3.125
+$$
+
+\color{black}
+
+
 \end{enumerate}
 
 \item 

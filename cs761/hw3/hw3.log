@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.17)  18 APR 2017 16:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.17)  18 APR 2017 19:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -370,15 +370,12 @@ Package epstopdf Info: Source file: <n1_KDE.eps>
 (epstopdf)                    date: 2017-04-18 16:12:43
 (epstopdf)                    size: 26750 bytes
 (epstopdf)             Output file: <n1_KDE-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 16:16:10
+(epstopdf)                    size: 33262 bytes
 (epstopdf)             Command: <repstopdf --outfile=n1_KDE-eps-converted-to.pd
 f n1_KDE.eps>
 (epstopdf)             \includegraphics on input line 132.
-runsystem(repstopdf --outfile=n1_KDE-eps-converted-to.pdf n1_KDE.eps)...execute
-d safely (allowed).
-
-Package epstopdf Info: Result file: <n1_KDE-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-04-18 16:16:10
-(epstopdf)                    size: 33262 bytes.
+Package epstopdf Info: Output file is already uptodate.
  <n1_KDE-eps-converted-to.pdf, id=63, 462.72874pt x 344.28625pt>
 File: n1_KDE-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -434,26 +431,167 @@ Overfull \hbox (53.13884pt too wide) in paragraph at lines 137--139
 []|  [] 
  []
 
-[5 <./2_KDE-eps-converted-to.pdf>] [6 <./1_2_KDE-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
+[5 <./2_KDE-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <gp_40.eps>
+(epstopdf)                    date: 2017-04-18 17:47:13
+(epstopdf)                    size: 42086 bytes
+(epstopdf)             Output file: <gp_40-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 19:00:02
+(epstopdf)                    size: 16973 bytes
+(epstopdf)             Command: <repstopdf --outfile=gp_40-eps-converted-to.pdf
+ gp_40.eps>
+(epstopdf)             \includegraphics on input line 160.
+Package epstopdf Info: Output file is already uptodate.
 
-[7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
+<gp_40-eps-converted-to.pdf, id=132, 462.72874pt x 346.29375pt>
+File: gp_40-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gp_40-eps-converted-to.pdf>
+Package pdftex.def Info: gp_40-eps-converted-to.pdf used on input line 160.
+(pdftex.def)             Requested size: 462.72762pt x 346.2929pt.
+
+Overfull \hbox (53.13884pt too wide) in paragraph at lines 159--161
+[]|  [] 
+ []
+
+[6 <./1_2_KDE-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <gp_10.eps>
+(epstopdf)                    date: 2017-04-18 17:48:25
+(epstopdf)                    size: 41046 bytes
+(epstopdf)             Output file: <gp_10-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 19:00:03
+(epstopdf)                    size: 17345 bytes
+(epstopdf)             Command: <repstopdf --outfile=gp_10-eps-converted-to.pdf
+ gp_10.eps>
+(epstopdf)             \includegraphics on input line 163.
+Package epstopdf Info: Output file is already uptodate.
+
+<gp_10-eps-converted-to.pdf, id=181, 462.72874pt x 346.29375pt>
+File: gp_10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gp_10-eps-converted-to.pdf>
+Package pdftex.def Info: gp_10-eps-converted-to.pdf used on input line 163.
+(pdftex.def)             Requested size: 462.72762pt x 346.2929pt.
+
+Overfull \hbox (53.13884pt too wide) in paragraph at lines 162--164
+[]|  [] 
+ []
+
+[7 <./gp_40-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <gp_1.eps>
+(epstopdf)                    date: 2017-04-18 17:49:10
+(epstopdf)                    size: 40527 bytes
+(epstopdf)             Output file: <gp_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 19:00:05
+(epstopdf)                    size: 16748 bytes
+(epstopdf)             Command: <repstopdf --outfile=gp_1-eps-converted-to.pdf 
+gp_1.eps>
+(epstopdf)             \includegraphics on input line 166.
+Package epstopdf Info: Output file is already uptodate.
+
+<gp_1-eps-converted-to.pdf, id=218, 462.72874pt x 346.29375pt>
+File: gp_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gp_1-eps-converted-to.pdf>
+Package pdftex.def Info: gp_1-eps-converted-to.pdf used on input line 166.
+(pdftex.def)             Requested size: 462.72762pt x 346.2929pt.
+
+Overfull \hbox (53.13884pt too wide) in paragraph at lines 165--167
+[]|  [] 
+ []
+
+[8 <./gp_10-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <gp_post_40.eps>
+(epstopdf)                    date: 2017-04-18 18:24:17
+(epstopdf)                    size: 39240 bytes
+(epstopdf)             Output file: <gp_post_40-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 19:00:44
+(epstopdf)                    size: 15721 bytes
+(epstopdf)             Command: <repstopdf --outfile=gp_post_40-eps-converted-t
+o.pdf gp_post_40.eps>
+(epstopdf)             \includegraphics on input line 179.
+Package epstopdf Info: Output file is already uptodate.
+
+<gp_post_40-eps-converted-to.pdf, id=254, 462.72874pt x 346.29375pt>
+File: gp_post_40-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gp_post_40-eps-converted-to.pdf>
+Package pdftex.def Info: gp_post_40-eps-converted-to.pdf used on input line 179
+.
+(pdftex.def)             Requested size: 462.72762pt x 346.2929pt.
+
+Overfull \hbox (53.13884pt too wide) in paragraph at lines 178--180
+[]|  [] 
+ []
+
+[9 <./gp_1-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <gp_post_10.eps>
+(epstopdf)                    date: 2017-04-18 18:25:12
+(epstopdf)                    size: 38622 bytes
+(epstopdf)             Output file: <gp_post_10-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 19:00:46
+(epstopdf)                    size: 15395 bytes
+(epstopdf)             Command: <repstopdf --outfile=gp_post_10-eps-converted-t
+o.pdf gp_post_10.eps>
+(epstopdf)             \includegraphics on input line 182.
+Package epstopdf Info: Output file is already uptodate.
+
+<gp_post_10-eps-converted-to.pdf, id=291, 462.72874pt x 346.29375pt>
+File: gp_post_10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gp_post_10-eps-converted-to.pdf>
+Package pdftex.def Info: gp_post_10-eps-converted-to.pdf used on input line 182
+.
+(pdftex.def)             Requested size: 462.72762pt x 346.2929pt.
+
+Overfull \hbox (53.13884pt too wide) in paragraph at lines 181--183
+[]|  [] 
+ []
+
+[10 <./gp_post_40-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <gp_post_1.eps>
+(epstopdf)                    date: 2017-04-18 18:25:54
+(epstopdf)                    size: 39466 bytes
+(epstopdf)             Output file: <gp_post_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-04-18 19:00:47
+(epstopdf)                    size: 15285 bytes
+(epstopdf)             Command: <repstopdf --outfile=gp_post_1-eps-converted-to
+.pdf gp_post_1.eps>
+(epstopdf)             \includegraphics on input line 185.
+Package epstopdf Info: Output file is already uptodate.
+
+<gp_post_1-eps-converted-to.pdf, id=322, 462.72874pt x 346.29375pt>
+File: gp_post_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use gp_post_1-eps-converted-to.pdf>
+Package pdftex.def Info: gp_post_1-eps-converted-to.pdf used on input line 185.
+
+(pdftex.def)             Requested size: 462.72762pt x 346.2929pt.
+
+Overfull \hbox (53.13884pt too wide) in paragraph at lines 184--186
+[]|  [] 
+ []
+
+[11 <./gp_post_10-eps-converted-to.pdf>] [12 <./gp_post_1-eps-converted-to.pdf>
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
+ [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
  (./hw3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 243.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
 Package rerunfilecheck Info: File `hw3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 196.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 243.
  ) 
 Here is how much of TeX's memory you used:
- 6089 strings out of 493013
- 87198 string characters out of 6136993
+ 6125 strings out of 493013
+ 88095 string characters out of 6136993
  175578 words of memory out of 5000000
- 9525 multiletter control sequences out of 15000+600000
+ 9549 multiletter control sequences out of 15000+600000
  10759 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,6n,26p,260b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,6n,26p,335b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-di
@@ -465,10 +603,10 @@ fb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2016
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2016/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw3.pdf (7 pages, 253895 bytes).
+Output written on hw3.pdf (13 pages, 340525 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
