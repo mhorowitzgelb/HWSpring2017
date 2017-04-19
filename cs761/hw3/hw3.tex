@@ -230,6 +230,21 @@ All edges share the same potential function $\psi(u,v) = \exp(\alpha u v)$, wher
 
   \begin{enumerate}
   \item Write down the joint probability distribution defined by this graphical model.
+
+\color{red}
+Let $\text{par}_i$ be the parent of node $i$ and let $r$ be the root.
+Then
+$$
+p(x_1,..., x_{15}) 
+= \prod_{i \neq r} 
+\frac{\exp (a x_i \text{par}_i)}{2*(\exp(a) + \exp(-a))} = \frac{1}{(2*(\exp(a) + \exp(-a))^{14}}  \prod_{i \neq r} 
+\exp (a x_i \text{par}_i)
+$$
+
+\color{black}  
+  
+  
+  
   \item Let $\alpha=1$.  Let $r$ be the root node and $s$ be the left-most leaf node.
   Use brute force (enumerating all trees) to compute $p(r \mid s=1)$.
   \item Implement Gibbs sampling to estimate $p(r \mid s=1)$.  Start with the all-minus-1 tree except for $s=1$.  Go over levels in top-down order, left-to-right within each level.
