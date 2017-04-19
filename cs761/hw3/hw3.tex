@@ -63,7 +63,7 @@ Show us the sample mean and sample variance (round to 5 digits after decimal poi
 \hspace*{-4cm}  
 \includegraphics[scale=1]{ice_scatter}
 
-\color{red}
+\color{blue}
 \textbf{Mean:} = 102.80769  
 \textbf{Variance:} = 343.57840
 \color{black}
@@ -74,7 +74,7 @@ where $y$ is DAYS and $x$ is the year.
 For example, for 1855-56 the year is 1855.
 Show us $\hat{\alpha}, \hat{\beta}$, and an estimate of the standard error on $\beta$: $\widehat{s.e}(\hat{\beta})$.
 
-\color{red}
+\color{blue}
 $$
 \hat{\beta} = -0.18561 \qquad \hat{\alpha}= 461.78577  \qquad \hat{s.e}\{\hat\beta\} = \sqrt{s^2 (X^\top X)^{-1} } = 0.00068
 $$
@@ -87,7 +87,7 @@ Write your own code for the Nadaraya-Watson estimator.
 Show us the leave-one-out score (Equation 23 in lecture notes \url{http://pages.cs.wisc.edu/~jerryzhu/cs761/kde.pdf}) for bandwidth 
 $h=10^{-1}, 10^{-0.9}, 10^{-0.8}, \ldots, 10^2$, respectively.
 
-\color{red}
+\color{blue}
 \begin{verbatim}
 h = 10^-1, LeaveOneOut Score = NaN
 h = 10^-0.9, LeaveOneOut Score = 470.15966
@@ -126,7 +126,7 @@ h = 10^1.9, LeaveOneOut Score = 312.90299
 For $h=10^{-1}, 10^{2}$ and the optimal $h$ you found, respectively,
 plot the function estimated by Nadaraya-Watson.
 
-\color{red}
+\color{blue}
 
 \hspace*{-4cm}
 \includegraphics[scale=1]{n1_KDE}
@@ -194,7 +194,7 @@ Each time, the stick may or may not intersect with a line.
 \begin{enumerate}
 \item What is the probability that the stick intersects with a line?  Show your work.
 
-\color{red}
+\color{blue}
 Let $\theta$ be the angle of the stick from the horizontal, and $\delta$ be the closest distance from the center of the stick to a line. Then
 if we assume $\theta \bot \delta$ and $\theta \sim Uniform(0,\pi) $ and $\delta \sim Uniform(0,a)$ then the probability that the stick intersects a line is
 $$
@@ -205,14 +205,14 @@ $$
 
 \item Propose a Monte Carlo method for estimating $\pi$ based on this. 
 
-\color{red}
+\color{blue}
 Let $X_1, X_2 , ... X_n$ be a random sample of binary variables where $1$ indicates dropping a stick resulting in it crossing a line. Then by the Law of large numbers as $n$ goes to infinity the sample mean, $\bar{X}_n$ converges in probability to $2/\pi$. So a method would be sample for large $n$ to acquire $\bar{X}_n$, 
 then $\pi \approx 2 * \bar{X}^{-1} $
 \color{black}
 
 \item Actually perform the experiment.  Tell us about it.
 
-\color{red}
+\color{blue}
 Note due to time constraints I was forced to simulate this experiment on the computer. I calculated $\bar{X}$ for a random sample of $100$ sticks and estimated 
 $$
 \pi \approx 3.125
@@ -231,7 +231,7 @@ All edges share the same potential function $\psi(u,v) = \exp(\alpha u v)$, wher
   \begin{enumerate}
   \item Write down the joint probability distribution defined by this graphical model.
 
-\color{red}
+\color{blue}
 Let $\text{par}_i$ be the parent of node $i$ and let $r$ be the root.
 Then
 $$
@@ -247,9 +247,39 @@ $$
   
   \item Let $\alpha=1$.  Let $r$ be the root node and $s$ be the left-most leaf node.
   Use brute force (enumerating all trees) to compute $p(r \mid s=1)$.
+\color{blue}
+Using brute force,
+$$
+P(r = 1 | s = 1) \approx 0.72087
+$$
+\color{black}  
+  
+  
   \item Implement Gibbs sampling to estimate $p(r \mid s=1)$.  Start with the all-minus-1 tree except for $s=1$.  Go over levels in top-down order, left-to-right within each level.
+  
+\color{blue}
+Using Gibbs Sampling,
+$$
+P(r = 1 | s = 1) \approx 0.72472
+$$
+\color{black}  
+  
   Discard a burn-in of $10^4$ samples.  Use the next $10^5$ samples for estimation.  Do not perform thinning.
   \item Implement Metropolis-Hastings sampling to estimate $p(r \mid s=1)$.  Clearly define and discuss your proposal distribution (which has to be different than Gibbs).  Use the same burn-in and number of samples as above.
+  
+\color{blue}
+For our proposal distribution we will assume all nodes are independent with equal probability of being -1 or 1. So
+$$
+q(x' | x^t) = \mathbf{1}_{x'_s = 1} * 2^{-14}
+$$
+
+Using this proposal and the same burn in and sample size we get,
+$$
+P(r = 1 | s = 1) \approx 0.67679
+$$
+
+\color{black}  
+ 
   \end{enumerate}
 
 
