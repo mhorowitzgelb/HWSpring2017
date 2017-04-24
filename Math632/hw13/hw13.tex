@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{parskip}
+
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
+\title{HW 13}
+\date{4/24/17}
+\author{Max Horowitz-Gelb}
+
+\begin{document}
+\maketitle
+
+\section*{Q1}
+First note that for $i \neq j$
+$$
+q(i,j) = \lim_{t \to 0} \frac{p_t(i,j) u(i,j)}{t}
+$$
+
+
+Then by definition of $p'$ and the Chapman-Kolmogorov equation,
+$$
+p'_t(i,j) =  \lim_{h \to 0} \frac{p_{t+h}(i,j) - p_t(i,j)}{h}
+$$
+$$
+= \lim_{h \to 0} \frac{\sum_{k} \big(p_t(i,k) p_h(k,j)\big) - p_t(i,j)}{h}
+$$
+$$
+= \lim_{h \to 0} \frac{\sum_{k\neq j} \big(p_t(i,k) p_h(k,j)\big) + p_t(i,j)(p_h(j,j)-1)}{h}
+$$
+$$
+= \lim_{h \to 0} \frac{\sum_{k\neq j} \big(p_t(i,k) p_h(k,j)\big)}{h} + \lim_{h \to 0} \frac{p_t(i,j)(p_h(j,j)-1)}{h}
+$$
+
+$$
+= \sum_{k\neq j} p_t(i,k) q(k,j) - \lim_{h \to 0} \frac{p_t(i,j)(\sum_{k\neq j} p_h(j,k)}{h}
+\qquad \text{By definition of }q
+$$
+$$
+= \sum_{k\neq j} p_t(i,k) q(k,j)  + p_t(i,j)(-\sum_{k\neq j} q(j,k))
+$$
+$$
+= \sum_{k\neq j} p_t(i,k) q(k,j)  + p_t(i,j)(-\lambda_j)
+$$
+$$
+= p_t(i,\cdot) Q(\cdot,j)
+$$
+
+\section*{Q2}
+Note
+$$
+\frac{\delta}{\delta t} p_t = \frac{\delta}{\delta t} e^{Qt}
+$$
+$$
+= Q \sum_{n=1} ^\infty \frac{n Q^{n-1} t^{n-1}}{n!}
+$$
+$$
+= Q \sum_{n=1} ^\infty \frac{Q^{n-1} t^{n-1}}{(n-1)!} 
+$$
+$$
+= Q p_t \qquad \text{by the givien solution of KBE}
+$$
+
+\section*{Q3}
+
+$$
+(\tilde{\pi}\tilde{p})_i = \frac{1}{\sum_{k\in S} \pi_k\lambda_k} \sum_{k \neq i} \pi_k \lambda_k \tilde{p}(k,i)
+$$
+$$
+= \frac{1}{\sum_{k\in S} \pi_k\lambda_k} \sum_{k \neq i} \pi_k \lambda_k \frac{q(k,i)}{\lambda_k}
+$$
+$$
+= \frac{1}{\sum_{k\in S} \pi_k\lambda_k} \sum_{k \neq i} \pi_k q(k,i)
+$$
+We know that $\pi Q = 0$ so This is equal to 
+$$
+\frac{-\pi_i Q_{i,i}}{\sum_{k\in S} \pi_k\lambda_k} 
+$$
+$$
+= \frac{\pi_i \lambda_i}{\sum_{k\in S} \pi_k\lambda_k} 
+$$
+so $\tilde{\pi}$ is a stationary measure, and clearly by the normalizing term it is also a distribution.
+
+\section*{Q4}
+
+\end{document}
