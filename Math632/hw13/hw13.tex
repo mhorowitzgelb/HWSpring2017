@@ -84,5 +84,123 @@ $$
 so $\tilde{\pi}$ is a stationary measure, and clearly by the normalizing term it is also a distribution.
 
 \section*{Q4}
+\subsection*{i}
+Note
+$$
+\lim_{t \to \infty} P_t(B,C) = \pi_C
+$$
 
+Then we solve for
+$$
+\pi \begin{bmatrix}
+Q_{A,A} & . & . \\
+Q_{B,A} & . & . \\
+1 & 1 & 1
+\end{bmatrix}
+= [0, 0, 1]
+$$
+
+
+and we get $\pi = [ 1/2,1/4, 1/4]$
+so $\pi_C = 1/4$.
+
+\subsection*{ii}
+The limiting fraction for the time in each city is simply the stationary distribution.
+So
+the limiting fraction for Atlanta is $1/2$, the limiting fraction for Boston is $1/4$ and the limiting fraction for Chicago is $1/4$.
+
+\subsection*{iii}
+Let $N(t)$ be the number of cities visited $t$ years, $X_{i}$ be the amount of time spent in the $i^{th}$ city and $Z_{B_i} = 1$ if city $i$ is Boston.
+
+Then by SLLN,
+$$
+\lim_{t \to \infty} N(t)^{-1} \sum_{i =1}^{N(t)} Z_{B,i}X_{i} 
+$$
+$$
+=\lim_{t \to \infty} N(t)^{-1} \sum_{i=1}^{N(t)} Z_{B,i}\sum_{i =1}^{N_B(t)} X_{B,i} = \lim_{n \to \infty} n^{-1} \sum_{i =1}^{n} X_{B,i} = E[X_B] = 1/4
+$$
+So
+$$
+E[\sum_{i=1}^{N(1)} Z_{B,i}\sum_{i =1}^{N_B(1)} X_{B,i}] = 1/4
+$$
+$$
+E[\sum_{i=1}^{N(1)} Z_{B,i}] \pi_B = 1/4
+$$
+$$
+E[\sum_{i=1}^{N(1)} Z_{B,i}] 1/4 = 1/4
+$$
+$$
+E[\sum_{i=1}^{N(1)} Z_{B,i}] = 1
+$$
+
+\subsection*{iv}
+The expected number of times she flies from Boston to Atlanta is
+$$
+E[\sum_{i=1}^{N(1)} Z_{B,i}] * P(B,A) = 3/4
+$$
+
+\section*{Q5}
+
+$$
+Q = \begin{tabular}{c | c | c |c | c|}
+
+& 0 & 1 & 2 & 3 \\
+\hline
+0 & -1 & 0 & 1 & 0\\
+\hline
+1 & 2 & -3 & 0 & 1 \\
+\hline
+2 & 0 & 2 & -2 & 0 \\
+\hline
+3 & 0 & 0 & 2 & -2\\
+\hline
+\end{tabular}
+$$
+
+Solving for $\pi Q = 0$ we get
+
+$$
+\pi = [ 0.4,  0.2,  0.3,  0.1]
+$$
+
+\section*{Q6}
+\subsection*{a}
+There are 5 states in this model,
+
+$0$ is when no machines are broken.
+
+$1$ is when machine 1 is broken.
+
+$2$ is when machine 2 is broken.
+
+$12$ is when both machines are broken but $1$ broke first.
+
+$21$ is when both machines are broken but $2$ broke first.
+
+$0$ can transition to 1 or 2
+
+1 can transition to 0, or 12
+
+12 can transition to 2
+
+21 can transition to 1
+
+\subsection*{b}
+This gives a $Q$ matrix of
+$$
+\begin{tabular}{llllll}
+                        & 0                       & 1                       & 2                       & 12                      & 21                      \\ \cline{2-6} 
+\multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{-4} & \multicolumn{1}{l|}{1}  & \multicolumn{1}{l|}{3}  & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{0}  \\ \cline{2-6} 
+\multicolumn{1}{l|}{1}  & \multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{-5} & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{3}  & \multicolumn{1}{l|}{0}  \\ \cline{2-6} 
+\multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{4}  & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{-5} & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{1}  \\ \cline{2-6} 
+\multicolumn{1}{l|}{12} & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{-2} & \multicolumn{1}{l|}{0}  \\ \cline{2-6} 
+\multicolumn{1}{l|}{21} & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{4}  & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{0}  & \multicolumn{1}{l|}{-4} \\ \cline{2-6} 
+\end{tabular}
+$$
+
+Solving for $\pi Q = 0$
+we get
+$$
+\pi = [ 0.34108527,  0.12403101,  0.27906977,  0.18604651,  0.06976744]
+$$
 \end{document}

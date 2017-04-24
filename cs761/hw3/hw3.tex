@@ -32,9 +32,9 @@ Instructions:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Insert your name and email here:
 
-Name:                      
+Name:   \color{blue} Max Horowitz-Gelb \color{black}                   
 
-Email: 
+Email: \color{blue} horowitzgelb@wisc.edu \color{black}
 
 \newpage % Please keep this page-break
 % Do not include any identifying information below this line.
@@ -232,13 +232,18 @@ All edges share the same potential function $\psi(u,v) = \exp(\alpha u v)$, wher
   \item Write down the joint probability distribution defined by this graphical model.
 
 \color{blue}
-Let $\text{par}_i$ be the parent of node $i$ and let $r$ be the root.
+Let $\text{par}(x_i)$ be the parent of node $x_i$ and let $r$ be the root.
 Then
 $$
 p(x_1,..., x_{15}) 
-= \prod_{i \neq r} 
-\frac{\exp (a x_i \text{par}_i)}{2*(\exp(a) + \exp(-a))} = \frac{1}{(2*(\exp(a) + \exp(-a))^{14}}  \prod_{i \neq r} 
-\exp (a x_i \text{par}_i)
+= \frac{1}{Z} \prod_{i \neq r} 
+\exp (a x_i \text{par}(x_i)) 
+$$
+
+Where 
+$$
+Z = \sum_{x' \in \{-1,1\}^{15}} \bigg(\prod_{i \neq r} 
+\exp (a x'_i \text{par}(x'_i)) \bigg)
 $$
 
 \color{black}  

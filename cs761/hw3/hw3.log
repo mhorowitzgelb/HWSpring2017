@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.1)  19 APR 2017 12:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.1)  19 APR 2017 14:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -574,21 +574,16 @@ Overfull \hbox (53.13884pt too wide) in paragraph at lines 184--186
  []
 
 [11 <./gp_post_10-eps-converted-to.pdf>] [12 <./gp_post_1-eps-converted-to.pdf>
-]
-Overfull \hbox (84.03842pt too wide) detected at line 242
-\OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; :::; x[]\OT1/cmr/m/n/1
-0 ) = [] [] = [] [] [](\OML/cmm/m/it/10 ax[][][]\OT1/cmr/m/n/10 )
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 288.
-[13] [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 288.
+] [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 293.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 293.
  (./hw3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 288.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 288.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 293.
 Package rerunfilecheck Info: File `hw3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 288.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 293.
  ) 
 Here is how much of TeX's memory you used:
  6111 strings out of 493029
@@ -606,15 +601,16 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw3.pdf (14 pages, 374237 bytes).
+msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on hw3.pdf (14 pages, 383100 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 167 compressed objects within 2 object streams
+ 461 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
  36 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
