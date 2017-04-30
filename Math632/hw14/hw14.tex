@@ -1,0 +1,57 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{parskip}
+
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
+\title{HW 14}
+\author{Max Horowitz-Gelb}
+
+\begin{document}
+\maketitle
+\section*{Q1}
+Let state 0 be the state that the machine is functioning and let states 1...3 represent when the machine is currently being fixed for failure 1 .. 3 respectively. Then 0 transitions to 1 .. 3 with probability proportional to $\lambda_1 ... \lambda_3$. Then states 1 ... 3 transition to 0 with probability 1. 
+
+Then $q(0, i) = \mu_i$ for $i \neq 0$ and $q(i, 0) = \lambda_i \text{ for } i \neq 0$, and 0 for everything else. Then for $\pi$ such that $\pi_0 = 1 / C$ and $\pi_i = \frac{\lambda_i}{\mu_i C} $ for $i \neq 0$ then 
+$$
+\pi_0 q(0,i) = \lambda_i = \frac{\lambda_i \mu_i}{\mu_i} = \pi_i q(i,0) \text{ for } i \neq 0
+$$
+Therefore $\pi$ satisfies the detailed balanced condition. Then let $C = 1 + \sum_{i \neq 0} \frac{\lambda_i}{\mu_i}$. With this $C$ then $\pi$ is a stationary distribution. 
+
+
+\section*{Q2}
+It should first be obvious that $q(i,j) = 0$ for $\lvert i - j \rvert > 1$.
+Then we have the q's related to the customer arrival rate
+$q(0,1) = q(1,2) = 5. $
+Then when only one barber is working we have
+$q(1,0) = 2$. And when two are working, $q(2,1) = 4$. 
+
+This model is a birth and death chain so it has a stationary  $\pi$ such that
+
+$$\pi_0 = 1 / C$$
+$$\pi_1 = \frac{5}{2C}$$
+$$\pi_2 = \frac{5*5}{2*4*C} = \frac{25}{8C}$$
+$$C = 1 + \frac{5}{2} + \frac{25}{8}$$
+
+\section*{Q3}
+This model is also a birth death chain so it has a stationary distribution $\pi$ such that
+$$
+\pi_0 = \pi_0
+$$
+$$
+\pi_i = \frac{5^i}{4^i}
+$$
+
+Since there are now 3 waiting chairs, then the set of states is $\{0, 1, 2,3,4\}$. 
+A customer will leave without being served if there are already 4 customers in the store. 
+And $\pi_4 = (5/4)^4 \pi_0$. In the old model a customer would leave when there where already 2 people in the shop. And there $\pi_2 = \frac{25}{8} \pi_0 > (5/4)^4 \pi_0$. The probability that a customer doesn't get served is proportional to the fraction of the time that the shop is full. So in this second problem, the store is full less of the team and therefore less customers get turned away.
+
+\section*{Q4}
+
+
+
+
+\end{document}
