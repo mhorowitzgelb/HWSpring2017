@@ -50,8 +50,41 @@ A customer will leave without being served if there are already 4 customers in t
 And $\pi_4 = (5/4)^4 \pi_0$. In the old model a customer would leave when there where already 2 people in the shop. And there $\pi_2 = \frac{25}{8} \pi_0 > (5/4)^4 \pi_0$. The probability that a customer doesn't get served is proportional to the fraction of the time that the shop is full. So in this second problem, the store is full less of the team and therefore less customers get turned away.
 
 \section*{Q4}
+Let $g(i) = E_iV_A$. Then solving for
+
+$$
+\sum_j Q(i,j)g(j) = -1 \qquad j \neq A
+$$
+we get $g(B) = 0.3$ and $g(C) = 0.2$.
+
+Then the expected time until she returns to Atlanta is 
+$$
+\tilde{p}(A,B)g(b) + \tilde{p}(A,C)g(c) = 0.5 * 0.3 + 0.5 * 0.2 = 0.25
+$$
 
 
+\section*{Q5}
+\subsection*{a}
+Solving for the stationary distribution we get
+$$
+\pi_A = 0.4, \pi_B = 0.3, \pi_C = 0.2, \pi_D = 0.1
+$$
+these correspond to the expected fraction of time in each of the states. 
+
+\subsection*{b}
+Yes this stationary distribution does follow detailed balance condition of verifying. 
+
+\subsection*{c}
+Let $g(i) = E_iV_D$.
+Solving 
+$$
+\sum_j Q(i,j)g(j) = -1 \qquad j \neq A
+$$
+we get 
+$$
+g(A) = 5.25
+$$
+which is the expected amount of time until depression sets in. 
 
 
 

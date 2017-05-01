@@ -32,7 +32,7 @@ namespace KdeNW
             var yArr = yVals.ToArray();
             var minScore = Double.PositiveInfinity;
             var minExp = -1.0;
-            /*
+            
             for (double exp = -1; exp <= 2; exp += 0.1)
             {
                 Math.Round(exp, 1);
@@ -48,12 +48,13 @@ namespace KdeNW
             }
             
             Console.WriteLine("Min score: " + minScore+ " Min Exp: " + minExp);
-            Console.WriteLine("Press ESC to stop");*/
+            Console.WriteLine("Press ESC to stop");
+            /*
             var aligner = new KdeNW(xArr,yArr,Math.Pow(10,2),new GaussianKernel());
             for (var year = 1855; year <= 2016; year++)
             {
                 Console.WriteLine(year+","+aligner.GetYFor(year));
-            }
+            }*/
             do
             {
                 while (!Console.KeyAvailable)
@@ -61,7 +62,7 @@ namespace KdeNW
                     // Do something
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
-
+            
         }
 
         
@@ -114,7 +115,7 @@ namespace KdeNW
                 for (int j = 0; j < _xvals.Length;j++)
                 {
                     var xVal = _xvals[j];
-                    var kVal = _kernel.GetValue((j == i ? 0:(xVal - leftOutX) / _bandwidth));
+                    var kVal = _kernel.GetValue((xVal - leftOutX) / _bandwidth);
                     kSum += kVal;
                 }
                 var weightedDiff = (GetYFor(_xvals[i]) - _yvals[i])/(1 - _kernel.GetValue(0) / kSum);
