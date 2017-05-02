@@ -25,29 +25,51 @@ Therefore $\pi$ satisfies the detailed balanced condition. Then let $C = 1 + \su
 \section*{Q2}
 It should first be obvious that $q(i,j) = 0$ for $\lvert i - j \rvert > 1$.
 Then we have the q's related to the customer arrival rate
-$q(0,1) = q(1,2) = 5. $
+$q(0,1) = q(1,2) = q(2,3) = q(3,4) = 5. $
 Then when only one barber is working we have
-$q(1,0) = 2$. And when two are working, $q(2,1) = 4$. 
+$q(1,0) = 2$. And when two are working, $q(4,3)= q(3,2) = q(2,1) = 4$. 
 
 This model is a birth and death chain so it has a stationary  $\pi$ such that
 
 $$\pi_0 = 1 / C$$
 $$\pi_1 = \frac{5}{2C}$$
 $$\pi_2 = \frac{5*5}{2*4*C} = \frac{25}{8C}$$
-$$C = 1 + \frac{5}{2} + \frac{25}{8}$$
+$$
+\pi_3 = \frac{5^3}{2*4^2C} = \frac{125}{32C}
+$$
+
+$$
+\pi_4 = \frac{5^4}{2*4^3C} = \frac{625}{128C}
+$$
+
+$$C = 1 + \frac{5}{2} + \frac{25}{8} + \frac{125}{32} + \frac{625}{128}$$
+
+So 
+$$
+\pi = \bigg[ \frac{128}{1973} , \frac{320}{1973} , \frac{400}{1973}, \frac{500}{1973}, \frac{625}{1973} \bigg]
+$$
+
 
 \section*{Q3}
 This model is also a birth death chain so it has a stationary distribution $\pi$ such that
 $$
-\pi_0 = \pi_0
+\pi_0 = 1/C
 $$
 $$
-\pi_i = \frac{5^i}{4^i}
+\pi_i = \frac{5^i}{4^iC}
+$$
+$$
+C = 1 + \sum_{i = 1}^4 \frac{5^i}{4^i}
+$$
+
+So 
+$$
+\pi = \bigg[ \frac{256}{2101}, \frac{320}{2101}, \frac{400}{2101}, \frac{500}{2101}, \frac{625}{2101} \bigg]
 $$
 
 Since there are now 3 waiting chairs, then the set of states is $\{0, 1, 2,3,4\}$. 
 A customer will leave without being served if there are already 4 customers in the store. 
-And $\pi_4 = (5/4)^4 \pi_0$. In the old model a customer would leave when there where already 2 people in the shop. And there $\pi_2 = \frac{25}{8} \pi_0 > (5/4)^4 \pi_0$. The probability that a customer doesn't get served is proportional to the fraction of the time that the shop is full. So in this second problem, the store is full less of the team and therefore less customers get turned away.
+And $\pi_4 = (5/4)^4 \pi_0$. In the old model a customer would leave when there where already 2 people in the shop. And there $\pi_4 =  \frac{625}{1973}  > \frac{625}{2101}$. The probability that a customer doesn't get served is proportional to the fraction of the time that the shop is full. So in this second problem, the store is full less of the time and therefore less customers get turned away.
 
 \section*{Q4}
 Let $g(i) = E_iV_A$. Then solving for
@@ -60,6 +82,23 @@ we get $g(B) = 0.3$ and $g(C) = 0.2$.
 Then the expected time until she returns to Atlanta is 
 $$
 \tilde{p}(A,B)g(b) + \tilde{p}(A,C)g(c) = 0.5 * 0.3 + 0.5 * 0.2 = 0.25
+$$
+
+\section*{Q5}
+Solving for $\pi Q = 0$, $\sum \pi_1 = 1$, we get
+$$
+\pi = [0.5, 0.25, 0.25]
+$$
+
+Since we don't care where she goes when she leaves Atlanta, we can treat this model as an alternating renewal process. Where $A$ is when she is in Atlanta and $\bar{A}$ is when she is not. Then let $\mu_A$ and $\mu_{\bar{A}}$ be the respective expected times in each state. 
+
+Then by Theorem 3.4 the limiting  fraction of the time spent in $\bar{A}$ is 
+$$
+\frac{\mu_{\bar{A}}}{\mu_A + \mu{\bar{A}}} = \frac{\mu_{\bar{A}}}{1/4 + \mu{\bar{A}}}
+$$
+This is equivalent to $1 - \pi_A = 0.5$ which implies
+$$
+\mu_{\bar{A}} = 0.25
 $$
 
 
